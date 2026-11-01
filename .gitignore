@@ -1,0 +1,9 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node / Build artifacts
+node_modules/
+.wrangler/
+package-lock.json

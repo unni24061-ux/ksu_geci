@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KSU GECI – Student Support</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#fff;--bg2:#f5f7fa;--tx:#1b2433;--mu:#5f6b7a;--bd:#e3e8ef;--ac:#134a9e;--ac2:#134a9e;--cd:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--tx);font:15.5px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+.bar{max-width:1180px;margin:auto;display:flex;align-items:center;gap:14px;padding:10px 18px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.3px}
+.logo i{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--ac),var(--ac2));display:grid;place-items:center;color:#fff;font-style:normal;font-size:13px;font-weight:800}
+nav{margin-left:auto;display:flex;gap:4px;align-items:center}
+nav a{padding:7px 11px;border-radius:8px;font-size:14px;color:var(--mu);transition:.2s}nav a:hover{background:var(--bg2);color:var(--tx)}
+.ib{display:grid;place-items:center;border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:10px;width:38px;height:38px;cursor:pointer;font-size:16px;position:relative}
+.dot{position:absolute;top:-4px;right:-4px;background:var(--ac);color:#fff;border-radius:9px;font-size:10px;padding:0 5px;line-height:16px}
+#mb{display:none}
+@media(max-width:820px){#mb{display:grid}nav{position:fixed;inset:60px 0 auto 0;flex-direction:column;background:var(--bg);padding:10px;border-bottom:1px solid var(--bd);transform:translateY(-130%);transition:.3s;align-items:stretch}nav.open{transform:none}nav a{padding:12px}}
+section{padding:44px 0}
+h1{font-size:clamp(30px,6vw,52px);line-height:1.1;letter-spacing:-1px}h2{font-size:26px;letter-spacing:-.5px;margin-bottom:6px}
+.sub{color:var(--mu);margin-bottom:24px}
+.hero{padding-top:48px}.hero p{color:var(--mu);max-width:560px;margin:14px 0 22px}
+.btn{display:inline-block;border:0;border-radius:10px;padding:11px 18px;font:600 15px inherit;font-family:inherit;cursor:pointer;background:var(--ac);color:#fff;transition:transform .15s,opacity .2s}.btn:hover{opacity:.9}.btn:active{transform:scale(.97)}
+.btn.g{background:var(--bg2);color:var(--tx);border:1px solid var(--bd)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:30px}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:16px}
+.ld span{color:var(--ac);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase}.ld b{font-size:21px;display:block;margin:4px 0}.ld a{color:var(--mu);font-size:15px}.ld a:hover{color:var(--ac)}
+.tick{background:var(--bg2);border-block:1px solid var(--bd)}.tick .in{max-width:1180px;margin:auto;padding:10px 18px;display:flex;gap:10px;align-items:center;font-size:14px;overflow:hidden;white-space:nowrap}
+.tick em{background:var(--ac);color:#fff;font-style:normal;font-size:11px;padding:2px 8px;border-radius:6px;animation:p 1.6s infinite}@keyframes p{50%{opacity:.5}}
+#tk{transition:opacity .4s,transform .4s;text-overflow:ellipsis;overflow:hidden}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.desk{cursor:pointer;transition:transform .2s,border-color .2s}.desk:hover{transform:translateY(-3px);border-color:var(--ac)}.desk .e{width:40px;height:40px;border-radius:10px;background:var(--bg2);color:var(--ac);display:grid;place-items:center}.desk h3{margin:8px 0 2px;font-size:17px}.desk p{color:var(--mu);font-size:14px}
+.panel{display:none;margin-top:18px}.panel.on{display:block;animation:in .35s}@keyframes in{from{opacity:0;transform:translateY(8px)}}
+details{border-bottom:1px solid var(--bd);padding:10px 0}summary{cursor:pointer;font-weight:600}details p{color:var(--mu);margin-top:6px;font-size:15px}
+form{display:grid;gap:10px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.row{grid-template-columns:1fr}.stats{gap:8px}.stat b{font-size:24px}}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ac2);border-color:transparent}
+label.ck{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--mu)}label.ck input{width:auto}
+.ev{display:flex;gap:14px;cursor:pointer;align-items:center;transition:transform .2s}.ev:hover{transform:translateX(4px)}
+.th{width:84px;height:84px;border-radius:12px;flex:none;background-size:cover;background-position:center;display:grid;place-items:center;font-size:30px;color:#fff}
+.tag{font-size:11px;padding:2px 8px;border-radius:6px;background:var(--bg2);color:var(--ac2);font-weight:600}.tag.up{background:var(--ac);color:#fff}
+dialog{border:0;border-radius:18px;max-width:560px;width:calc(100% - 28px);background:var(--bg);color:var(--tx);padding:0;box-shadow:0 20px 60px #0006}dialog::backdrop{background:#0008;backdrop-filter:blur(3px)}
+.dp{padding:20px;display:grid;gap:12px;max-height:85vh;overflow:auto}.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.gal div{aspect-ratio:1;border-radius:10px;background-size:cover;background-position:center;display:grid;place-items:center;font-size:26px;color:#fff}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}.ct a{display:flex;gap:12px;align-items:center}.ct .e{width:40px;height:40px;border-radius:10px;background:var(--bg2);color:var(--ac);display:grid;place-items:center;flex:none}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}.rv.v{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:30px 18px 40px;border-top:1px solid var(--bd)}footer button{background:none;border:0;color:var(--mu);cursor:pointer;text-decoration:underline;font:inherit}
+.ok{color:var(--ac2);font-weight:600}.it{border:1px solid var(--bd);border-radius:12px;padding:12px;margin-top:8px;font-size:14px}.it small{color:var(--mu)}
+#toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translate(-50%,90px);background:var(--tx);color:var(--bg);padding:10px 18px;border-radius:10px;transition:.3s;z-index:50;font-size:14px}#toast.s{transform:translate(-50%,0)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}.tabs button{flex:none}
+.wrap{max-width:1180px;margin:auto;padding:0 18px;display:grid;grid-template-columns:minmax(0,1fr) 296px;gap:36px;align-items:start}
+aside{position:sticky;top:76px;margin-top:44px;display:grid;gap:12px;max-height:calc(100vh - 92px);overflow:auto}
+.pl h3{font-size:11.5px;letter-spacing:.9px;text-transform:uppercase;color:var(--mu);margin-bottom:4px;display:flex;gap:8px;align-items:center}
+.pl h3::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--ac2);animation:p 1.8s infinite}
+.pl ul{list-style:none;padding:0}.pl li{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:9px 0;border-top:1px solid var(--bd)}.pl li:first-child{border-top:0}
+.pl li small{display:block;color:var(--mu);font-size:11.5px}.pl li b{font-size:13.5px;font-weight:600}.pl li a{display:flex;gap:5px;align-items:center;font-size:12px;color:var(--ac);white-space:nowrap}.pl li a:hover{text-decoration:underline}
+.kick{color:var(--ac);font-weight:600;font-size:12.5px;letter-spacing:.9px;text-transform:uppercase;margin-bottom:10px}
+.hero{position:relative}.hero::before{content:'';position:absolute;inset:0 -30px;z-index:-1;background:radial-gradient(520px 260px at 15% 20%,#1d4ed820,transparent),radial-gradient(440px 240px at 85% 70%,#0ea5e91f,transparent);animation:dr 12s ease-in-out infinite alternate}@keyframes dr{to{transform:translate(28px,14px) scale(1.07)}}
+.hero .kick,.hero h1,.hero p,.hero .btn{animation:up .8s cubic-bezier(.2,.7,.2,1) both}.hero h1{animation-delay:.08s}.hero p{animation-delay:.16s}.hero .btn{animation-delay:.24s}@keyframes up{from{opacity:0;transform:translateY(14px)}}
+@media(max-width:960px){.wrap{grid-template-columns:1fr;gap:0}aside{position:static;max-height:none;margin:0 0 30px}}
+
+.card,.btn,input,select,textarea,.desk .e{border-radius:6px}.btn{font-weight:500}
+header{background:#fff;backdrop-filter:none}.logo img{border-radius:50%}.logo span{font-size:15px;color:#0b2a55}
+h2{font-size:21px}.wrap{display:block;max-width:1080px}.desk:hover,.ev:hover{transform:none}.desk:hover{border-color:#9db4d6}
+.tick em{animation:none;border-radius:3px}
+.hero{padding:0;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;color:#fff;background:#0b2a55}.hero::before{display:none}
+.hb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 32s ease-in-out infinite alternate}@keyframes kb{to{transform:scale(1.07)}}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,30,66,.85),rgba(9,30,66,.45) 65%,rgba(9,30,66,.15))}
+.fog{position:absolute;inset:auto 0 0 0;height:75%;z-index:2;overflow:hidden;pointer-events:none}
+.fog i{position:absolute;bottom:-12%;left:-60%;width:220%;height:100%;background:radial-gradient(ellipse 18% 40% at 12% 60%,rgba(255,255,255,.55),transparent),radial-gradient(ellipse 22% 45% at 38% 70%,rgba(255,255,255,.45),transparent),radial-gradient(ellipse 20% 38% at 62% 55%,rgba(255,255,255,.5),transparent),radial-gradient(ellipse 18% 42% at 88% 68%,rgba(255,255,255,.45),transparent);filter:blur(22px);opacity:.7;animation:fg 38s linear infinite alternate;will-change:transform}
+.fog i+i{bottom:-20%;opacity:.5;animation-duration:56s;animation-direction:alternate-reverse}@keyframes fg{to{transform:translateX(28%)}}
+.hin{position:relative;z-index:3;max-width:1080px;width:100%;margin:auto;padding:100px 18px 44px}
+.hero .kick{color:#bcd4f5}.hero h1{color:#fff}.hero p{color:#e3ecf8}
+.btn.w{background:#fff;color:#0b2a55}.btn.o{background:transparent;border:1px solid #ffffffaa;color:#fff}
+#contact{padding:26px 0 8px}#contact h2{font-size:16px;margin-bottom:10px}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;font-size:13px}.cg h4{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--mu);margin-bottom:4px}
+.cg ul{list-style:none;padding:0}.cg li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--bd)}.cg li small{display:block;color:var(--mu);font-size:11px}.cg li b{font-weight:600;font-size:13px}.cg li a{color:var(--ac);display:flex;gap:4px;align-items:center;font-size:12px}
+dialog{border-radius:8px;overflow:hidden}#edc{padding:0;gap:0}
+.sl{position:relative;aspect-ratio:16/9;background:#0b2a55;overflow:hidden}.sl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s}.sl img.on{opacity:1}
+.pv,.nx{position:absolute;top:50%;transform:translateY(-50%);border:0;background:#0007;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:20px;line-height:1}.pv{left:8px}.nx{right:8px}
+.dt{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px}.dt b{width:6px;height:6px;border-radius:50%;background:#fff6}.dt b.on{background:#fff}
+.eb{padding:14px 18px 18px;display:grid;gap:6px}.eb h2{font-size:18px;margin:0}
+@media(max-width:600px){.hin{padding:84px 18px 32px}}
+@media(prefers-reduced-motion:reduce){.hb,.fog i{animation:none}}
+
+#dg{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.desk.card{padding:12px}.desk .e{width:30px;height:30px}.desk h3{font-size:14px;margin:6px 0 1px}.desk p{font-size:12px;line-height:1.35}
+.ev.card{display:block;padding:0;overflow:hidden}.evi{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0b2a55}.tr{display:flex;height:100%}.tr img{flex:0 0 100%;width:100%;height:100%;object-fit:cover}
+.evi .tag{position:absolute;top:8px;left:8px;z-index:1}.evb{padding:9px 12px 11px}.evb h3{font-size:14px;margin:0 0 1px}
+.hero{min-height:240px;animation:hr 1.1s cubic-bezier(.2,.7,.2,1) both}@keyframes hr{from{clip-path:inset(0 0 55% 0);opacity:.4}to{clip-path:inset(0);opacity:1}}
+.hin{padding:64px 18px 26px}.hero h1{font-size:clamp(24px,4.5vw,36px)}.hero p{margin:10px 0 16px;font-size:14.5px}
+@media(max-width:600px){.hin{padding:50px 18px 22px}}
+.wab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 6px 18px #0003;transition:transform .2s}
+.wab:hover{transform:scale(1.08)}.wab::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ring 2.4s ease-out infinite}@keyframes ring{to{transform:scale(1.55);opacity:0}}
+@media(prefers-reduced-motion:reduce){.hero,.wab::after{animation:none}}
+
+.tb{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}.tb td{padding:7px 8px;border-top:1px solid var(--bd)}.tb td:first-child{font-weight:600;width:38%}
+.ul{margin:6px 0 0;padding-left:20px;color:var(--mu);font-size:14.5px}.ul li{margin:3px 0}
+.x{width:30px;height:30px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:19px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0;flex:none}
+.sl .x{position:absolute;top:8px;right:8px;z-index:5}.dh{display:flex;justify-content:space-between;align-items:center}.dh .x{background:var(--bg2);color:var(--tx)}
+
+/* Side-aligned layout refinement */
+.bar{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding-inline:clamp(18px,3.2vw,52px);
+}
+.logo{flex:0 0 auto;margin-right:auto}
+nav{margin-left:auto}
+#bell{margin-left:0!important;flex:0 0 38px}
+#mb{flex:0 0 38px}
+.tick .in{
+  max-width:none;
+  width:100%;
+  padding-inline:clamp(18px,3.2vw,52px);
+}
+.wrap{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding-inline:clamp(18px,3.2vw,52px);
+}
+.hin{
+  max-width:none;
+  width:100%;
+  margin:0;
+  padding-inline:clamp(18px,3.2vw,52px);
+}
+#contact,.mn>section{scroll-margin-top:80px}
+@media(max-width:820px){
+  .bar{padding-inline:16px}
+  nav{margin-left:0}
+  #bell{margin-left:auto!important}
+  .wrap{padding-inline:16px}
+  .hin{padding-inline:16px}
+  .tick .in{padding-inline:16px}
+}
+
+</style>
+</head>
+<body>
+<header><div class="bar">
+ <a class="logo" href="#top"><img id="lg" alt="" width="36" height="36"><span>KSU GECI</span></a>
+ <nav id="nav"><a href="#desks">Help Desks</a><a href="#events">Events</a><a href="#contact">Contact</a><a href="#desks" data-open="complaint">Complaint Box</a></nav>
+ <button class="ib" id="bell" title="Notifications" style="margin-left:auto"><span class="dot" id="nc">0</span></button>
+ 
+ <button class="ib" id="mb" aria-label="Menu"></button>
+</div></header>
+
+<div class="tick"><div class="in"><em>Updates</em><span id="tk">Loading updates…</span></div></div>
+
+<section class="hero" id="top"><img class="hb" alt=""><div class="fog"><i></i><i></i></div><div class="hin"><div class="kick">Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div></section>
+<div class="wrap"><div class="mn">
+
+<section id="desks" class="rv">
+ <h2>Help Desks</h2><p class="sub">Choose a desk to get started.</p>
+ <div class="grid" id="dg"></div>
+ <div id="panels"></div>
+</section>
+
+<section id="events" class="rv">
+ <h2>Events</h2><p class="sub">Tap an event for photos and details.</p>
+ <div class="tabs" style="margin-bottom:14px"><button class="btn" data-f="all">All</button><button class="btn g" data-f="up">Upcoming</button><button class="btn g" data-f="past">Past</button></div>
+ <div class="grid" id="eg" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))"></div>
+</section>
+
+<section id="contact" class="rv"><h2>Contact</h2><div class="cg"><div><h4>KSU GECI Team</h4><ul id="l-ksu"></ul></div><div><h4>College Officials</h4><ul id="l-col"></ul></div><div><h4>Reach us</h4><ul><li><span>WhatsApp</span><a id="c-wa" target="_blank" rel="noopener">+91 90000 00000</a></li><li><span>Email</span><a id="c-em" href="mailto:ksu.geci@example.com">ksu.geci@example.com</a></li><li><span>Instagram</span><a id="c-ig" href="https://instagram.com/ksu_geci" target="_blank" rel="noopener">@ksu_geci</a></li></ul></div></div></section>
+
+</div></div>
+<footer>© KSU GECI · Built for students </footer>
+
+<dialog id="nd"><div class="dp"><div class="dh"><h2>Notifications</h2><button class="x" aria-label="Close">×</button></div><div id="nl"></div></div></dialog>
+<dialog id="ed"><div class="dp" id="edc"></div></dialog>
+
+<a id="wab" class="wab" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"></a>
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script><script src="config.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* ---- Data layer: swap these 2 functions for Firebase/Supabase in production ---- */
+const LOGO='assets/logo.jpg',HERO='assets/hero.jpg',IA='assets/a.jpg',IB='assets/b.jpg';
+const P={users:`<path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M22 21v-2a4 4 0 0 0-3-3.87'/><path d='M16 3.13a4 4 0 0 1 0 7.75'/>`,cap:`<path d='M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z'/><path d='M22 10v6'/><path d='M6 12.5V16a6 3 0 0 0 12 0v-3.5'/>`,bld:`<path d='M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z'/><path d='M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2'/><path d='M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2'/><path d='M10 6h4M10 10h4M10 14h4M10 18h4'/>`,bed:`<path d='M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8'/><path d='M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4'/><path d='M12 4v6M2 18h20'/>`,doc:`<path d='M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z'/><path d='M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8'/>`,msg:`<path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/>`,wa:`<path d='M7.9 20A9 9 0 1 0 4 16.1L2 22Z'/>`,phone:`<path d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z'/>`,mail:`<rect width='20' height='16' x='2' y='4' rx='2'/><path d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'/>`,ig:`<rect width='20' height='20' x='2' y='2' rx='5'/><path d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'/><path d='M17.5 6.5h.01'/>`,bell:`<path d='M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9'/><path d='M10.3 21a1.94 1.94 0 0 0 3.4 0'/>`,moon:`<path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/>`,menu:`<path d='M4 6h16M4 12h16M4 18h16'/>`,cal:`<path d='M8 2v4M16 2v4'/><rect width='18' height='18' x='3' y='4' rx='2'/><path d='M3 10h18'/>`};
+const ic=(n,s=20)=>`<svg width='${s}' height='${s}' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>${P[n]}</svg>`;
+const IC={admission:'cap',college:'bld',hostel:'bed',complaint:'doc',message:'msg',priyadarshini:'users'};
+const iso=d=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10),add=n=>{const d=new Date();d.setDate(d.getDate()+n);return iso(d)};
+const ls={get(k,d){try{const v=localStorage.getItem('ksu_'+k);if(v)return JSON.parse(v)}catch(e){}return d},set(k,v){try{localStorage.setItem('ksu_'+k,JSON.stringify(v))}catch(e){}}};
+const LIVE=!!(window.KSU&&KSU.url&&!KSU.url.includes('YOUR-')&&window.supabase),sb=LIVE?supabase.createClient(KSU.url,KSU.key):null;
+const DEF={"admission": {"t": "Admission Help Desk", "d": "Documents, dates, fees and help", "b": "# Documents needed\nAllotment memo\nSSLC marklist and certificate\nPlus Two marklist\nTransfer Certificate (TC)\nConduct certificate\nCommunity certificate\nIncome certificate (if applicable)\nAadhaar card\nPassport size photographs\n# Dates allotted\nCSE | Date to be announced\nECE | Date to be announced\nEEE | Date to be announced\nME | Date to be announced\nCE | Date to be announced\n# Missed reporting date\nIf you miss your reporting date, contact the admission desk immediately on WhatsApp with your allotment details.\n# Fee structure\nTuition fee | To be updated\nCaution deposit | To be updated\nOther fees | To be updated"}, "priyadarshini": {"t": "Priyadarshini", "d": "Dedicated support space", "b": "# How can I reach out?\nUse the WhatsApp button below and we will get back to you."}};
+const C={notifs:[{t:'Welcome to the KSU GECI portal',d:add(0)},{t:'Union meeting this Friday, 4 PM – Seminar Hall',d:add(-1)}],
+ events:[{id:1,title:'Freshers’ Welcome',date:add(9),place:'Main Auditorium',desc:'A warm welcome for the new batch with music, games and a campus walk.',imgs:[HERO,IA,IB]},{id:2,title:'Blood Donation Camp',date:add(21),place:'College Campus',desc:'Join hands to save lives. Organised with the district hospital.',imgs:[IA,IB,HERO]},{id:3,title:'Onam Celebration',date:add(-40),place:'College Ground',desc:'Pookalam, vadamvali and sadya.',imgs:[IB,HERO,IA]}],
+ ppl:{ksu:['Chairman','Vice Chairman','KSU GECI President','General Secretary','Joint Secretary'].map((r,i)=>({r,n:'Add name',p:'+91 90000 0000'+(i+1)})),col:['Principal','Vice Principal','Office Superintendent','Hostel Warden'].map((r,i)=>({r,n:'Add name',p:'+91 90000 0001'+(i+1)}))},
+ help:DEF,set:{wa:'919000000000',email:'ksu.geci@example.com',ig:'ksu_geci',group:''}};
+const get=k=>C[k];
+async function load(){if(!LIVE)return;try{const q=t=>sb.from(t).select('*');const [n,e,p,h,s]=await Promise.all([q('notifications').order('created_at',{ascending:false}).limit(20),q('events').order('date',{ascending:false}),q('people').order('sort'),q('helpdesks'),q('settings')]);
+ if(n.data)C.notifs=n.data.map(x=>({t:x.text,d:x.created_at.slice(0,10)}));
+ if(e.data)C.events=e.data.map(x=>({id:x.id,title:x.title,date:x.date,place:x.place||'Campus',desc:x.descr||'',imgs:x.images||[]}));
+ if(p.data){const m=g=>p.data.filter(x=>x.grp===g).map(x=>({r:x.role,n:x.name||'',p:x.phone||''}));C.ppl={ksu:m('ksu'),col:m('col')}}
+ if(h.data&&h.data.length){C.help={};h.data.forEach(x=>C.help[x.slug]={t:x.title,d:x.blurb,b:x.body})}
+ if(s.data)s.data.forEach(x=>C.set[x.key]=x.value)}catch(err){console.error(err)}}
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('s');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('s'),2600)};
+const tid=p=>p+'-'+Math.random().toString(36).slice(2,7).toUpperCase();
+
+/* ---- Theme + nav ---- */
+const root=document.documentElement;
+$('#mb').onclick=()=>$('#nav').classList.toggle('open');
+$$('#nav a').forEach(a=>a.addEventListener('click',()=>$('#nav').classList.remove('open')));
+$('#wab').innerHTML=ic('wa',28);
+
+/* ---- Stats + notifications ---- */
+const ROW=l=>l.map(x=>`<li><div><small>${esc(x.r)}</small><b>${esc(x.n)}</b></div><a href="tel:${x.p.replace(/[^\d+]/g,'')}" aria-label="Call ${esc(x.r)}">${ic('phone',13)}<span>${esc(x.p)}</span></a></li>`).join('');
+function renderStats(){const t=get('ppl');$('#l-ksu').innerHTML=ROW(t.ksu);$('#l-col').innerHTML=ROW(t.col)}
+let ti=0;
+function renderNotifs(){const n=get('notifs').slice().sort((a,b)=>b.d.localeCompare(a.d));const seen=+ls.get('seen',0);
+ $('#nc').textContent=Math.max(0,n.length-seen);$('#nc').style.display=n.length>seen?'':'none';
+ $('#nl').innerHTML=n.map(x=>`<div class="it">${esc(x.t)}<br><small>${esc(x.d)}</small></div>`).join('')||'<p class="sub">Nothing yet.</p>';
+ const tk=$('#tk');tk.textContent=n.length?n[ti%n.length].t:'No new updates';}
+setInterval(()=>{ti++;const tk=$('#tk');tk.style.opacity=0;tk.style.transform='translateY(6px)';setTimeout(()=>{renderNotifs();tk.style.opacity=1;tk.style.transform=''},350)},4500);
+$('#bell').onclick=()=>{nd.showModal();ls.set('seen',get('notifs').length);renderNotifs()};
+
+/* ---- Help desks ---- */
+const order=['admission','complaint','priyadarshini'],H=id=>C.help[id]||DEF[id],BADGE={'Pending':'#8a6d00','Under review':'#134a9e','Resolved':'#0a7a3d','Rejected':'#a12b2b'};
+const FAQ=b=>(b||'').split('\n').map(l=>l.split('|').map(x=>x.trim())).filter(a=>a[0]&&a[1]).map(a=>`<details><summary>${esc(a[0])}</summary><p>${esc(a.slice(1).join(' | '))}</p></details>`).join('');
+const SECT=b=>{const out=[];let t=null;(b||'').split('\n').forEach(l=>{l=l.trim();if(!l)return;if(l[0]==='#'){t={h:l.replace(/^#+\s*/,''),r:[]};out.push(t)}else if(t)t.r.push(l)});
+ if(!out.length)return FAQ(b);
+ return out.map(s=>{let body;if(s.r.length&&s.r.every(x=>x.includes('|')))body=`<table class="tb">${s.r.map(x=>{const a=x.split('|').map(y=>esc(y.trim()));return `<tr><td>${a[0]}</td><td>${a.slice(1).join(' | ')}</td></tr>`}).join('')}</table>`;
+ else if(s.r.length===1)body=`<p>${esc(s.r[0])}</p>`;else body=`<ul class="ul">${s.r.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+ return `<details><summary>${esc(s.h)}</summary>${body}</details>`}).join('')};
+const grp=id=>id==='admission'&&/^https:\/\//.test(C.set.group||'')?` <a class="btn g" target="_blank" rel="noopener" href="${esc(C.set.group)}">Join admission group</a>`:'';
+const waLink=t=>'https://wa.me/'+C.set.wa+'?text='+encodeURIComponent(t);
+function renderDesks(){const L=order.map(id=>id==='complaint'?{id,n:'Complaint Box',d:'Raise an issue and track its status'}:{id,n:H(id).t,d:H(id).d});
+ $('#dg').innerHTML=L.map(d=>`<div class="card desk" data-d="${d.id}"><div class="e">${ic(IC[d.id])}</div><h3>${esc(d.n)}</h3><p>${esc(d.d)}</p></div>`).join('');
+ $('#panels').innerHTML=L.map(d=>`<div class="card panel" id="p-${d.id}"></div>`).join('');
+ $$('.desk').forEach((c,i)=>{c.onclick=()=>openDesk(c.dataset.d);c.classList.add('rv');c.style.transitionDelay=i*60+'ms';io.observe(c)})}
+function panel(id){if(id==='complaint')return `<h3>Submit a complaint</h3><form id="cf"><div class="row"><select name="sem" required><option value="">Semester</option>${[1,2,3,4,5,6,7,8].map(i=>`<option>S${i}</option>`).join('')}</select><select name="branch" required><option value="">Branch</option><option>CSE</option><option>ECE</option><option>EEE</option><option>ME</option><option>CE</option><option>Other</option></select></div><div class="row"><input name="name" placeholder="Name"><input name="phone" type="tel" placeholder="Phone number"></div><input name="subject" placeholder="Subject" required maxlength="150"><textarea name="body" rows="4" placeholder="Describe your complaint" required maxlength="2000"></textarea><label class="ck"><input type="checkbox" name="anon"> Send anonymously (name and phone will not be saved)</label><button class="btn">Submit complaint</button></form><div id="cr"></div><h3 style="margin-top:18px">Track your complaint</h3><form id="tf" class="row"><input name="cid" placeholder="Complaint ID, e.g. CMP-AB12C0" value="${esc(ls.get('last',''))}" required><button class="btn g">Check status</button></form><div id="ts"></div>`;
+ const h=H(id);return `<h3>${esc(h.t)}</h3><p class="sub" style="margin:2px 0 8px">${esc(h.d)}</p>${SECT(h.b)}<p style="margin-top:12px"><a class="btn" target="_blank" rel="noopener" href="${waLink('Hi KSU GECI, I have a query for the '+h.t)}">Get help on WhatsApp</a>${grp(id)}</p>`}
+function openDesk(id,scroll=true){$$('.panel').forEach(p=>p.classList.remove('on'));const p=$('#p-'+id);p.innerHTML=panel(id);p.classList.add('on');bind(p);if(scroll)p.scrollIntoView({behavior:'smooth',block:'start'})}
+async function track(cid){cid=cid.trim().toUpperCase();if(LIVE){const r=await sb.rpc('track_complaint',{cid});return r.error||!r.data||!r.data.length?null:r.data[0]}
+ const c=ls.get('complaints',[]).find(x=>x.id===cid);return c?{subject:c.subject,status:c.status,remark:'',created_at:c.date}:null}
+function bind(p){
+ $$('[data-open]',p).forEach(b=>b.onclick=()=>openDesk(b.dataset.open));
+ const cf=$('#cf');if(cf)cf.onsubmit=async e=>{e.preventDefault();const f=new FormData(cf),anon=!!f.get('anon'),btn=cf.querySelector('button');btn.disabled=true;let id;
+  try{if(LIVE){const r=await sb.rpc('submit_complaint',{p_sem:f.get('sem'),p_branch:f.get('branch'),p_name:f.get('name')||'',p_phone:f.get('phone')||'',p_subject:f.get('subject'),p_body:f.get('body'),p_anon:anon});if(r.error)throw r.error;id=r.data}
+   else{id=tid('CMP');const c=ls.get('complaints',[]);c.unshift({id,subject:f.get('subject'),status:'Pending',date:iso(new Date())});ls.set('complaints',c)}
+   ls.set('last',id);cf.reset();$('#tf').cid.value=id;$('#cr').innerHTML=`<p class="ok" style="margin-top:12px">Complaint received. Your reference ID is <b>${esc(id)}</b>. Save it to check the status later.</p>`;toast('Complaint submitted')}
+  catch(err){toast('Could not submit. Please try again.')}btn.disabled=false};
+ const tf=$('#tf');if(tf)tf.onsubmit=async e=>{e.preventDefault();const r=await track(tf.cid.value);$('#ts').innerHTML=r?`<div class="it"><b>${esc(r.subject)}</b><br><span style="color:${BADGE[r.status]||'#555'};font-weight:600">${esc(r.status)}</span>${r.remark?`<br><small>Note from KSU:</small> ${esc(r.remark)}`:''}<br><small>Submitted ${esc(String(r.created_at).slice(0,10))}</small></div>`:'<p class="sub" style="margin-top:8px">No complaint found with that ID.</p>'}}
+$$('[data-open]').forEach(a=>a.addEventListener('click',()=>setTimeout(()=>openDesk(a.dataset.open),50)));
+
+/* ---- Events ---- */
+let flt='all';
+const bg=(e,i)=>e.imgs&&e.imgs[i]?`background-image:url(${e.imgs[i]})`:`background:linear-gradient(135deg,${e.c},#222 160%)`;
+function renderEvents(){const t=iso(new Date());let ev=get('events').slice().sort((a,b)=>b.date.localeCompare(a.date));
+ if(flt==='up')ev=ev.filter(e=>e.date>=t).reverse();if(flt==='past')ev=ev.filter(e=>e.date<t);
+ $('#eg').innerHTML=ev.map(e=>{const im=e.imgs&&e.imgs.length?e.imgs:[HERO],up=e.date>=t;return `<div class="card ev" data-e="${e.id}"><div class="evi"><div class="tr" data-n="${im.length}">${[...im,im[0]].map(u=>`<img src="${u}" alt="">`).join('')}</div><span class="tag ${up?'up':''}">${up?'UPCOMING':'PAST'}</span></div><div class="evb"><h3>${esc(e.title)}</h3><small style="color:var(--mu)">${esc(e.date)} · ${esc(e.place)}</small></div></div>`}).join('')||'<p class="sub">No events.</p>';
+ $$('.ev').forEach(c=>c.onclick=()=>{const e=get('events').find(x=>x.id==c.dataset.e),im=e.imgs&&e.imgs.length?e.imgs:[HERO];
+$('#edc').innerHTML=`<div class="sl"><button class="x" aria-label="Close">×</button>${im.map((u,i)=>`<img src="${u}" alt="" class="${i?'':'on'}">`).join('')}${im.length>1?`<button class="pv" aria-label="Previous">&#8249;</button><button class="nx" aria-label="Next">&#8250;</button><div class="dt">${im.map((u,i)=>`<b class="${i?'':'on'}"></b>`).join('')}</div>`:''}</div><div class="eb"><h2>${esc(e.title)}</h2><small style="color:var(--mu)">${esc(e.date)} · ${esc(e.place)}</small><p>${esc(e.desc)}</p></div>`;
+let k=0;const I=$$('#edc .sl img'),D=$$('#edc .dt b'),go=n=>{k=(n+I.length)%I.length;I.forEach((x,i)=>x.classList.toggle('on',i===k));D.forEach((x,i)=>x.classList.toggle('on',i===k))};
+clearInterval(window._sl);if(I.length>1){window._sl=setInterval(()=>go(k+1),3200);$('#edc .pv').onclick=()=>{go(k-1);clearInterval(window._sl)};$('#edc .nx').onclick=()=>{go(k+1);clearInterval(window._sl)}}
+ed.showModal()})}
+$$('[data-f]').forEach(b=>b.onclick=()=>{flt=b.dataset.f;$$('[data-f]').forEach(x=>x.className='btn'+(x===b?'':' g'));renderEvents()});
+
+/* ---- Scroll reveal ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}}),{threshold:.12});
+$$('.rv').forEach(e=>io.observe(e));
+$$('.card.stat,.desk').forEach((e,i)=>{e.classList.add('rv');e.style.transitionDelay=i*60+'ms';io.observe(e)});
+
+$('#bell').insertAdjacentHTML('afterbegin',ic('bell',18));$('#mb').innerHTML=ic('menu',18);$$('#contact .e').forEach((e,i)=>e.innerHTML=ic(['wa','mail','ig','phone'][i]));
+$('#lg').src=LOGO;$('.hb').src=HERO;setInterval(()=>{if(document.hidden)return;$$('.ev .tr').forEach(t=>{const n=+t.dataset.n;if(n<2)return;const i=(+t.dataset.i||0)+1;t.dataset.i=i;t.style.transition='transform .8s ease';t.style.transform='translateX(-'+i*100+'%)';if(i===n)setTimeout(()=>{t.style.transition='none';t.style.transform='none';t.dataset.i=0},850)})},3200);
+nd.addEventListener('click',()=>nd.close());ed.addEventListener('click',e=>{if(!e.target.closest('.pv,.nx'))ed.close()});ed.addEventListener('close',()=>clearInterval(window._sl));
+(async()=>{await load();const t=C.set;$('#c-wa').href=waLink('Hi KSU GECI,');$('#c-wa').textContent='+'+t.wa;$('#wab').href=$('#c-wa').href;$('#c-em').href='mailto:'+t.email;$('#c-em').textContent=t.email;$('#c-ig').href='https://instagram.com/'+t.ig;$('#c-ig').textContent='@'+t.ig;renderDesks();renderStats();renderNotifs();renderEvents()})();
+</script>
+</body>
+</html>
