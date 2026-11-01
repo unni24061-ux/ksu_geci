@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>KSU GECI – Student Support</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
 <style>
 :root{--bg:#fff;--bg2:#f5f7fa;--tx:#1b2433;--mu:#5f6b7a;--bd:#e3e8ef;--ac:#134a9e;--ac2:#134a9e;--cd:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 
@@ -72,20 +74,23 @@ header nav a{color:var(--mu);transition:color .2s,background .2s}header nav a:ho
 header .ib{background:var(--cd);border-color:var(--bd);color:var(--tx)}
 h2{font-size:21px}.wrap{display:block;max-width:1080px}
 .tick em{animation:none;border-radius:3px}
-.hero{position:relative;padding:0;width:100%;height:clamp(230px,25vw,310px);min-height:230px;overflow:hidden;display:flex;align-items:center;justify-content:flex-start;color:#fff;background:#0266b3;box-sizing:border-box}
+.hero{position:relative;padding:0;width:100%;height:clamp(220px,24vw,290px);min-height:220px;overflow:hidden;display:flex;align-items:center;justify-content:flex-start;color:#fff;background:#0266b3;box-sizing:border-box}
 .hero::before,.fog{display:none!important}
 .hb-pic{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hb{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
-.hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(2,60,130,.76) 0%,rgba(2,60,130,.42) 48%,rgba(2,60,130,0) 85%);pointer-events:none}
-.hin{position:relative;z-index:2;width:100%;max-width:1180px;margin:0;padding-inline:clamp(18px,3.5vw,52px);padding-block:clamp(14px,2.2vw,24px)}
-.hero .kick{color:#bcd4f5;font-weight:600;font-size:clamp(11px,1.2vw,12.5px);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}
-.hero h1{font-size:clamp(22px,3.2vw,34px);font-weight:700;line-height:1.15;letter-spacing:-.8px;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5);margin-bottom:6px}
-.hero p{color:#e5effa;max-width:520px;font-size:clamp(13px,1.3vw,15px);margin:0 0 14px;line-height:1.45;text-shadow:0 1px 6px rgba(0,0,0,.35)}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(4,24,54,.82) 0%,rgba(4,24,54,.5) 48%,rgba(4,24,54,.08) 85%);pointer-events:none}
+.hin{position:relative;z-index:2;width:100%;max-width:1180px;margin:0;padding-inline:clamp(18px,3.5vw,52px);padding-block:clamp(12px,2vw,22px)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:3px 10px;border-radius:20px;font-family:'Montserrat',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:#fff;margin-bottom:6px}
+.hero-badge .hb-dot{width:6px;height:6px;border-radius:50%;background:#38ef7d;box-shadow:0 0 6px #38ef7d}
+.hero h1.hero-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(26px,4.2vw,40px);line-height:1.02;letter-spacing:1px;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.45);margin:0 0 2px;display:flex;flex-direction:column}
+.hero .hero-sub{font-family:'Montserrat',sans-serif;font-size:clamp(11px,1.3vw,13.5px);font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#dbeafe;text-shadow:0 1px 6px rgba(0,0,0,.35);margin-top:4px}
+.hero p.hero-desc{font-family:'Plus Jakarta Sans',sans-serif;color:#f1f5f9;max-width:520px;font-size:clamp(12px,1.2vw,13.5px);font-weight:500;margin:4px 0 12px;line-height:1.4;text-shadow:0 1px 6px rgba(0,0,0,.3)}
 .hero-btns{display:flex;gap:8px;flex-wrap:wrap}
-.hero-btns .btn{padding:8px 18px;font-size:13.5px;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-.btn.w{background:#fff;color:#0b2a55;font-weight:600}.btn.w:hover{background:#f0f4fa}
-.btn.o{background:rgba(9,30,66,.55);border:1px solid rgba(255,255,255,.6);color:#fff;font-weight:600}.btn.o:hover{background:rgba(9,30,66,.8)}
-@media(max-width:600px){.hero{height:auto;min-height:220px}.hin{padding-block:16px}.hero h1{font-size:20px}.hero p{font-size:12.5px;margin-bottom:10px}.hero-btns .btn{padding:7px 14px;font-size:12.5px}}
+.hero-btns .btn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;padding:8px 18px;font-size:13px;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.22);transition:transform .18s,box-shadow .18s}
+.hero-btns .btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.btn.w{background:#fff;color:#0b2a55;font-weight:700;border:1px solid #fff}.btn.w:hover{background:#f8fafc}
+.btn.o{background:rgba(11,42,85,.6);border:1.5px solid rgba(255,255,255,.7);color:#fff;font-weight:700;backdrop-filter:blur(8px)}.btn.o:hover{background:rgba(11,42,85,.85);border-color:#fff}
+@media(max-width:600px){.hero{height:auto;min-height:220px}.hin{padding-block:14px}.hero h1.hero-title{font-size:24px}.hero .hero-sub{font-size:11px;letter-spacing:1.2px}.hero p.hero-desc{font-size:12px;margin-bottom:10px}.hero-btns .btn{padding:7px 14px;font-size:12px}}
 #contact{padding:26px 0 8px}#contact h2{font-size:16px;margin-bottom:10px}
 .cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;font-size:13px}.cg h4{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--mu);margin-bottom:4px}
 .cg ul{list-style:none;padding:0}.cg li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--bd)}.cg li small{display:block;color:var(--mu);font-size:11px}.cg li b{font-weight:600;font-size:13px}.cg li a{color:var(--ac);display:flex;gap:4px;align-items:center;font-size:12px}
@@ -163,7 +168,7 @@ nav{margin-left:auto}
 
 <div class="tick rv" id="dashboard"><div class="in"><em>Updates</em><span id="tk">Loading updates…</span></div></div>
 
-<section class="hero" id="top"><picture class="hb-pic"><source media="(max-width: 768px)" id="hbm-src" srcset="assets/hero-mobile.jpg"><img class="hb" id="hb-img" src="assets/hero.jpg" alt="Government Engineering College Idukki"></picture><div class="hin"><div class="kick">Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><div class="hero-btns"><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div></div></section>
+<section class="hero" id="top"><picture class="hb-pic"><source media="(max-width: 768px)" id="hbm-src" srcset="assets/hero-mobile.jpg"><img class="hb" id="hb-img" src="assets/hero.jpg" alt="Government Engineering College Idukki"></picture><div class="hin"><div class="hero-badge"><span class="hb-dot"></span>KSU · GECI UNIT</div><h1 class="hero-title">KSU<span class="hero-sub">GOVERNMENT ENGINEERING COLLEGE IDUKKI</span></h1><p class="hero-desc">Student Support Portal · Help Desks, Complaints &amp; Events in one place</p><div class="hero-btns"><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div></div></section>
 <div class="wrap"><div class="mn">
 
 <section id="desks" class="rv">
