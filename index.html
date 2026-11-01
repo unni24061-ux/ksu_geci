@@ -68,15 +68,21 @@ aside{position:sticky;top:76px;margin-top:44px;display:grid;gap:12px;max-height:
 header{background:#fff;backdrop-filter:none}.logo img{border-radius:50%}.logo span{font-size:15px;color:#0b2a55}
 h2{font-size:21px}.wrap{display:block;max-width:1080px}.desk:hover,.ev:hover{transform:none}.desk:hover{border-color:#9db4d6}
 .tick em{animation:none;border-radius:3px}
-.hero{padding:0;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;color:#fff;background:#0b2a55}.hero::before{display:none}
-.hb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 32s ease-in-out infinite alternate}@keyframes kb{to{transform:scale(1.07)}}
-.hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,30,66,.85),rgba(9,30,66,.45) 65%,rgba(9,30,66,.15))}
-.fog{position:absolute;inset:auto 0 0 0;height:75%;z-index:2;overflow:hidden;pointer-events:none}
-.fog i{position:absolute;bottom:-12%;left:-60%;width:220%;height:100%;background:radial-gradient(ellipse 18% 40% at 12% 60%,rgba(255,255,255,.55),transparent),radial-gradient(ellipse 22% 45% at 38% 70%,rgba(255,255,255,.45),transparent),radial-gradient(ellipse 20% 38% at 62% 55%,rgba(255,255,255,.5),transparent),radial-gradient(ellipse 18% 42% at 88% 68%,rgba(255,255,255,.45),transparent);filter:blur(22px);opacity:.7;animation:fg 38s linear infinite alternate;will-change:transform}
-.fog i+i{bottom:-20%;opacity:.5;animation-duration:56s;animation-direction:alternate-reverse}@keyframes fg{to{transform:translateX(28%)}}
-.hin{position:relative;z-index:3;max-width:1080px;width:100%;margin:auto;padding:100px 18px 44px}
-.hero .kick{color:#bcd4f5}.hero h1{color:#fff}.hero p{color:#e3ecf8}
-.btn.w{background:#fff;color:#0b2a55}.btn.o{background:transparent;border:1px solid #ffffffaa;color:#fff}
+.hero{position:relative;width:100%;min-height:clamp(520px,72vh,780px);padding:0;overflow:hidden;display:flex;align-items:flex-end;color:#fff;background:#081a36}.hero::before{display:none}
+.hb{position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;object-position:center 32%;animation:kb 36s ease-in-out infinite alternate;will-change:transform}@keyframes kb{0%{transform:scale(1) translate(0,0)}50%{transform:scale(1.06) translate(-1.2%,-0.8%)}100%{transform:scale(1.03) translate(0.8%,-1.2%)}}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,26,54,0.18) 0%,transparent 35%,rgba(8,26,54,0.3) 65%,rgba(8,26,54,0.85) 100%),linear-gradient(90deg,rgba(8,26,54,0.7) 0%,rgba(8,26,54,0.22) 48%,transparent 78%);pointer-events:none}
+.fog{position:absolute;inset:auto 0 0 0;height:48%;z-index:2;overflow:hidden;pointer-events:none}
+.fog i{position:absolute;bottom:-8%;left:-40%;width:180%;height:100%;background:radial-gradient(ellipse 20% 35% at 15% 70%,rgba(255,255,255,0.18),transparent),radial-gradient(ellipse 24% 40% at 55% 80%,rgba(255,255,255,0.14),transparent),radial-gradient(ellipse 20% 35% at 85% 70%,rgba(255,255,255,0.16),transparent);filter:blur(28px);opacity:.65;animation:fg 36s ease-in-out infinite alternate;will-change:transform}
+.fog i+i{bottom:-15%;opacity:.4;animation-duration:54s;animation-direction:alternate-reverse}@keyframes fg{from{transform:translateX(-5%)}to{transform:translateX(6%)}}
+.hin{position:relative;z-index:3;width:100%;margin:0;padding:40px clamp(18px,3.2vw,52px) clamp(36px,5vh,64px)}
+.hero-card{max-width:560px;background:rgba(8,26,54,0.44);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:clamp(22px,3vw,34px);box-shadow:0 16px 40px rgba(0,0,0,0.32),inset 0 1px 0 rgba(255,255,255,0.25);animation:cardRise .9s cubic-bezier(.16,1,.3,1) both}@keyframes cardRise{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.hero .kick{color:#bcd4f5;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:12px;background:rgba(255,255,255,0.12);padding:4px 11px;border-radius:20px;border:1px solid rgba(255,255,255,0.18)}
+.hero .kick em{display:inline-block;width:6px;height:6px;border-radius:50%;background:#38bdf8;box-shadow:0 0 8px #38bdf8}
+.hero h1{color:#fff;font-size:clamp(28px,4.5vw,44px);line-height:1.15;letter-spacing:-.5px;margin-bottom:10px;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
+.hero p{color:#e2e8f0;font-size:15px;line-height:1.5;margin:0 0 20px;text-shadow:0 1px 4px rgba(0,0,0,0.25)}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn.w{background:#fff;color:#0b2a55;font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,0.18);transition:transform .2s,box-shadow .2s}.btn.w:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(255,255,255,0.25)}
+.btn.o{background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);color:#fff;font-weight:500;transition:transform .2s,background .2s,border-color .2s}.btn.o:hover{transform:translateY(-2px);background:rgba(255,255,255,0.24);border-color:#fff}
 #contact{padding:26px 0 8px}#contact h2{font-size:16px;margin-bottom:10px}
 .cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;font-size:13px}.cg h4{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--mu);margin-bottom:4px}
 .cg ul{list-style:none;padding:0}.cg li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--bd)}.cg li small{display:block;color:var(--mu);font-size:11px}.cg li b{font-weight:600;font-size:13px}.cg li a{color:var(--ac);display:flex;gap:4px;align-items:center;font-size:12px}
@@ -92,9 +98,7 @@ dialog{border-radius:8px;overflow:hidden}#edc{padding:0;gap:0}
 .desk.card{padding:12px}.desk .e{width:30px;height:30px}.desk h3{font-size:14px;margin:6px 0 1px}.desk p{font-size:12px;line-height:1.35}
 .ev.card{display:block;padding:0;overflow:hidden}.evi{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0b2a55}.tr{display:flex;height:100%}.tr img{flex:0 0 100%;width:100%;height:100%;object-fit:cover}
 .evi .tag{position:absolute;top:8px;left:8px;z-index:1}.evb{padding:9px 12px 11px}.evb h3{font-size:14px;margin:0 0 1px}
-.hero{min-height:240px;animation:hr 1.1s cubic-bezier(.2,.7,.2,1) both}@keyframes hr{from{clip-path:inset(0 0 55% 0);opacity:.4}to{clip-path:inset(0);opacity:1}}
-.hin{padding:64px 18px 26px}.hero h1{font-size:clamp(24px,4.5vw,36px)}.hero p{margin:10px 0 16px;font-size:14.5px}
-@media(max-width:600px){.hin{padding:50px 18px 22px}}
+@media(max-width:600px){.hero{min-height:clamp(460px,68vh,580px)}.hin{padding:26px 16px 32px}.hero-card{padding:20px}}
 .wab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 6px 18px #0003;transition:transform .2s}
 .wab:hover{transform:scale(1.08)}.wab::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ring 2.4s ease-out infinite}@keyframes ring{to{transform:scale(1.55);opacity:0}}
 @media(prefers-reduced-motion:reduce){.hero,.wab::after{animation:none}}
@@ -155,7 +159,7 @@ nav{margin-left:auto}
 
 <div class="tick"><div class="in"><em>Updates</em><span id="tk">Loading updates…</span></div></div>
 
-<section class="hero" id="top"><img class="hb" alt=""><div class="fog"><i></i><i></i></div><div class="hin"><div class="kick">Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div></section>
+<section class="hero" id="top"><img class="hb" alt="Government Engineering College Idukki Campus"><div class="fog"><i></i><i></i></div><div class="hin"><div class="hero-card"><div class="kick"><em></em>Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><div class="hero-btns"><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a> <button class="btn o" id="btn-campus" type="button" title="View full panoramic college photo">📷 Full View</button></div></div></div></section>
 <div class="wrap"><div class="mn">
 
 <section id="desks" class="rv">
@@ -273,7 +277,11 @@ $$('.rv').forEach(e=>io.observe(e));
 $$('.card.stat,.desk').forEach((e,i)=>{e.classList.add('rv');e.style.transitionDelay=i*60+'ms';io.observe(e)});
 
 $('#bell').insertAdjacentHTML('afterbegin',ic('bell',18));$('#mb').innerHTML=ic('menu',18);$$('#contact .e').forEach((e,i)=>e.innerHTML=ic(['wa','mail','ig','phone'][i]));
-$('#lg').src=LOGO;$('.hb').src=HERO;setInterval(()=>{if(document.hidden)return;$$('.ev .tr').forEach(t=>{const n=+t.dataset.n;if(n<2)return;const i=(+t.dataset.i||0)+1;t.dataset.i=i;t.style.transition='transform .8s ease';t.style.transform='translateX(-'+i*100+'%)';if(i===n)setTimeout(()=>{t.style.transition='none';t.style.transform='none';t.dataset.i=0},850)})},3200);
+$('#lg').src=LOGO;$('.hb').src=HERO;const bc=$('#btn-campus');if(bc)bc.onclick=()=>{
+  $('#edc').innerHTML=`<div class="sl"><button class="x" aria-label="Close">×</button><img src="${HERO}" alt="Government Engineering College Idukki Campus" class="on" style="max-height:85vh;object-fit:contain"></div><div class="eb"><h2>Government Engineering College, Idukki (GECI)</h2><small style="color:var(--mu)">Painavu, Idukki, Kerala</small><p>Full panoramic view of the college campus nestled in the Western Ghats.</p></div>`;
+  ed.showModal();
+};
+setInterval(()=>{if(document.hidden)return;$$('.ev .tr').forEach(t=>{const n=+t.dataset.n;if(n<2)return;const i=(+t.dataset.i||0)+1;t.dataset.i=i;t.style.transition='transform .8s ease';t.style.transform='translateX(-'+i*100+'%)';if(i===n)setTimeout(()=>{t.style.transition='none';t.style.transform='none';t.dataset.i=0},850)})},3200);
 nd.addEventListener('click',()=>nd.close());ed.addEventListener('click',e=>{if(!e.target.closest('.pv,.nx'))ed.close()});ed.addEventListener('close',()=>clearInterval(window._sl));
 (async()=>{await load();const t=C.set;$('#c-wa').href=waLink('Hi KSU GECI,');$('#c-wa').textContent='+'+t.wa;$('#wab').href=$('#c-wa').href;$('#c-em').href='mailto:'+t.email;$('#c-em').textContent=t.email;$('#c-ig').href='https://instagram.com/'+t.ig;$('#c-ig').textContent='@'+t.ig;renderDesks();renderStats();renderNotifs();renderEvents()})();
 </script>
