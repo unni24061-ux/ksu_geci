@@ -65,19 +65,29 @@ aside{position:sticky;top:76px;margin-top:44px;display:grid;gap:12px;max-height:
 @media(max-width:960px){.wrap{grid-template-columns:1fr;gap:0}aside{position:static;max-height:none;margin:0 0 30px}}
 
 .card,.btn,input,select,textarea,.desk .e{border-radius:6px}.btn{font-weight:500}
-header{background:#fff;backdrop-filter:none}.logo img{border-radius:50%}.logo span{font-size:15px;color:#0b2a55}
-h2{font-size:21px}.wrap{display:block;max-width:1080px}.desk:hover,.ev:hover{transform:none}.desk:hover{border-color:#9db4d6}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(9,30,66,.38);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.14);transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
+.logo img{border-radius:50%}.logo span{font-size:15px;font-weight:700;color:#fff;transition:color .35s ease}
+header nav a{color:rgba(255,255,255,.88);transition:color .2s,background .2s}header nav a:hover{color:#fff;background:rgba(255,255,255,.15)}
+header .ib{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.24);color:#fff;transition:background .3s,border-color .3s,color .3s}
+header.scrolled{background:rgba(255,255,255,.96);border-bottom:1px solid var(--bd);box-shadow:0 4px 20px rgba(0,0,0,.08)}
+header.scrolled .logo span{color:#0b2a55}header.scrolled nav a{color:var(--mu)}header.scrolled nav a:hover{color:var(--tx);background:var(--bg2)}
+header.scrolled .ib{background:var(--cd);border-color:var(--bd);color:var(--tx)}
+h2{font-size:21px}.wrap{display:block;max-width:1080px}
 .tick em{animation:none;border-radius:3px}
-.hero{padding:0;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;color:#fff;background:#0b2a55}.hero::before{display:none}
+.hero{position:relative;padding:0;overflow:hidden;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:flex-start;color:#fff;background:#0b2a55;box-sizing:border-box}.hero::before{display:none}
 .hb-pic{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 32s ease-in-out infinite alternate}@keyframes kb{to{transform:scale(1.07)}}
-.hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,30,66,.85),rgba(9,30,66,.45) 65%,rgba(9,30,66,.15))}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,30,66,.52) 0%,rgba(9,30,66,.32) 40%,rgba(9,30,66,.8) 100%),linear-gradient(90deg,rgba(9,30,66,.85) 0%,rgba(9,30,66,.45) 60%,rgba(9,30,66,.15) 100%)}
 .fog{position:absolute;inset:auto 0 0 0;height:75%;z-index:2;overflow:hidden;pointer-events:none}
 .fog i{position:absolute;bottom:-12%;left:-60%;width:220%;height:100%;background:radial-gradient(ellipse 18% 40% at 12% 60%,rgba(255,255,255,.55),transparent),radial-gradient(ellipse 22% 45% at 38% 70%,rgba(255,255,255,.45),transparent),radial-gradient(ellipse 20% 38% at 62% 55%,rgba(255,255,255,.5),transparent),radial-gradient(ellipse 18% 42% at 88% 68%,rgba(255,255,255,.45),transparent);filter:blur(22px);opacity:.7;animation:fg 38s linear infinite alternate;will-change:transform}
 .fog i+i{bottom:-20%;opacity:.5;animation-duration:56s;animation-direction:alternate-reverse}@keyframes fg{to{transform:translateX(28%)}}
-.hin{position:relative;z-index:3;max-width:1080px;width:100%;margin:auto;padding:100px 18px 44px}
-.hero .kick{color:#bcd4f5}.hero h1{color:#fff}.hero p{color:#e3ecf8}
+.hin{position:relative;z-index:3;width:100%;max-width:1180px;margin:0;padding:clamp(90px,13vh,140px) clamp(18px,3.5vw,52px) clamp(60px,8vh,90px)}
+.hero .kick{color:#bcd4f5;font-weight:600;font-size:clamp(12px,1.4vw,14px);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:12px}
+.hero h1{font-size:clamp(32px,5.5vw,54px);font-weight:700;line-height:1.12;letter-spacing:-1px;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.5);margin-bottom:12px}
+.hero p{color:#e5effa;max-width:580px;font-size:clamp(15px,1.8vw,18px);margin:14px 0 24px;line-height:1.5;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.hero .btn{padding:12px 22px;font-size:15px;border-radius:10px}
 .btn.w{background:#fff;color:#0b2a55}.btn.o{background:transparent;border:1px solid #ffffffaa;color:#fff}
+.sc-cue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:4px;color:#fff;text-decoration:none;font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.85;cursor:pointer;animation:scCue 2.2s ease-in-out infinite}.sc-cue:hover{opacity:1;color:#fff}@keyframes scCue{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
 #contact{padding:26px 0 8px}#contact h2{font-size:16px;margin-bottom:10px}
 .cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;font-size:13px}.cg h4{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--mu);margin-bottom:4px}
 .cg ul{list-style:none;padding:0}.cg li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--bd)}.cg li small{display:block;color:var(--mu);font-size:11px}.cg li b{font-weight:600;font-size:13px}.cg li a{color:var(--ac);display:flex;gap:4px;align-items:center;font-size:12px}
@@ -86,19 +96,18 @@ dialog{border-radius:8px;overflow:hidden}#edc{padding:0;gap:0}
 .pv,.nx{position:absolute;top:50%;transform:translateY(-50%);border:0;background:#0007;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:20px;line-height:1}.pv{left:8px}.nx{right:8px}
 .dt{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px}.dt b{width:6px;height:6px;border-radius:50%;background:#fff6}.dt b.on{background:#fff}
 .eb{padding:14px 18px 18px;display:grid;gap:6px}.eb h2{font-size:18px;margin:0}
-@media(max-width:600px){.hin{padding:84px 18px 32px}}
-@media(prefers-reduced-motion:reduce){.hb,.fog i{animation:none}}
-
 #dg{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .desk.card{padding:12px}.desk .e{width:30px;height:30px}.desk h3{font-size:14px;margin:6px 0 1px}.desk p{font-size:12px;line-height:1.35}
 .ev.card{display:block;padding:0;overflow:hidden}.evi{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0b2a55}.tr{display:flex;height:100%}.tr img{flex:0 0 100%;width:100%;height:100%;object-fit:cover}
 .evi .tag{position:absolute;top:8px;left:8px;z-index:1}.evb{padding:9px 12px 11px}.evb h3{font-size:14px;margin:0 0 1px}
-.hero{min-height:240px;animation:hr 1.1s cubic-bezier(.2,.7,.2,1) both}@keyframes hr{from{clip-path:inset(0 0 55% 0);opacity:.4}to{clip-path:inset(0);opacity:1}}
-.hin{padding:64px 18px 26px}.hero h1{font-size:clamp(24px,4.5vw,36px)}.hero p{margin:10px 0 16px;font-size:14.5px}
-@media(max-width:600px){.hin{padding:50px 18px 22px}}
+.rv{opacity:0;transform:translateY(36px) scale(.98);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1);will-change:opacity,transform}.rv.v{opacity:1;transform:none}
+.tick{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}.tick.v{opacity:1;transform:none}
+.desk.card,.ev.card,.cg>div{opacity:0;transform:translateY(28px) scale(.96);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1),box-shadow .2s,border-color .2s;will-change:opacity,transform}
+.desk.card.v,.ev.card.v,.cg>div.v{opacity:1;transform:none}
+.desk.card:hover,.ev.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 8px 24px rgba(11,42,85,.09);border-color:#9db4d6}
 .wab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 6px 18px #0003;transition:transform .2s}
 .wab:hover{transform:scale(1.08)}.wab::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ring 2.4s ease-out infinite}@keyframes ring{to{transform:scale(1.55);opacity:0}}
-@media(prefers-reduced-motion:reduce){.hero,.wab::after{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero,.wab::after,.hb,.fog i,.sc-cue{animation:none}.rv,.tick,.desk.card,.ev.card,.cg>div{opacity:1!important;transform:none!important;transition:none!important}}
 
 .tb{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}.tb td{padding:7px 8px;border-top:1px solid var(--bd)}.tb td:first-child{font-weight:600;width:38%}
 .ul{margin:6px 0 0;padding-left:20px;color:var(--mu);font-size:14.5px}.ul li{margin:3px 0}
@@ -154,9 +163,9 @@ nav{margin-left:auto}
  <button class="ib" id="mb" aria-label="Menu"></button>
 </div></header>
 
-<div class="tick"><div class="in"><em>Updates</em><span id="tk">Loading updates…</span></div></div>
+<section class="hero" id="top"><picture class="hb-pic"><source media="(max-width: 768px)" id="hbm-src" srcset="assets/hero-mobile.jpg"><img class="hb" id="hb-img" src="assets/hero.jpg" alt="Government Engineering College Idukki"></picture><div class="fog"><i></i><i></i></div><div class="hin"><div class="kick">Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div><a class="sc-cue" href="#dashboard" aria-label="Explore dashboard"><span>Explore</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10l5 5 5-5"/></svg></a></section>
 
-<section class="hero" id="top"><picture class="hb-pic"><source media="(max-width: 768px)" id="hbm-src" srcset="assets/hero-mobile.jpg"><img class="hb" id="hb-img" src="assets/hero.jpg" alt="Government Engineering College Idukki"></picture><div class="fog"><i></i><i></i></div><div class="hin"><div class="kick">Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div></section>
+<div class="tick rv" id="dashboard"><div class="in"><em>Updates</em><span id="tk">Loading updates…</span></div></div>
 <div class="wrap"><div class="mn">
 
 <section id="desks" class="rv">
@@ -268,15 +277,36 @@ clearInterval(window._sl);if(I.length>1){window._sl=setInterval(()=>go(k+1),3200
 ed.showModal()})}
 $$('[data-f]').forEach(b=>b.onclick=()=>{flt=b.dataset.f;$$('[data-f]').forEach(x=>x.className='btn'+(x===b?'':' g'));renderEvents()});
 
-/* ---- Scroll reveal ---- */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}}),{threshold:.12});
-$$('.rv').forEach(e=>io.observe(e));
-$$('.card.stat,.desk').forEach((e,i)=>{e.classList.add('rv');e.style.transitionDelay=i*60+'ms';io.observe(e)});
+/* ---- Scroll reveals & header scroll state ---- */
+const updateHeaderScroll=()=>{const hdr=$('header');if(hdr)hdr.classList.toggle('scrolled',window.scrollY>50)};
+window.addEventListener('scroll',updateHeaderScroll,{passive:true});
+updateHeaderScroll();
+
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('v');
+      e.target.querySelectorAll?.('.desk.card, .ev.card, .cg > div')?.forEach((c,i)=>{
+        setTimeout(()=>c.classList.add('v'),i*70);
+      });
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+
+function attachReveals(){
+  $$('.rv, .tick, section, .desk.card, .ev.card, #contact .cg > div').forEach((e,i)=>{
+    e.classList.add('rv');
+    e.style.transitionDelay=(i%6)*60+'ms';
+    io.observe(e);
+  });
+}
+attachReveals();
 
 $('#bell').insertAdjacentHTML('afterbegin',ic('bell',18));$('#mb').innerHTML=ic('menu',18);$$('#contact .e').forEach((e,i)=>e.innerHTML=ic(['wa','mail','ig','phone'][i]));
 $('#lg').src=LOGO;if($('#hb-img'))$('#hb-img').src=HERO;if($('#hbm-src'))$('#hbm-src').srcset=HERO_M;setInterval(()=>{if(document.hidden)return;$$('.ev .tr').forEach(t=>{const n=+t.dataset.n;if(n<2)return;const i=(+t.dataset.i||0)+1;t.dataset.i=i;t.style.transition='transform .8s ease';t.style.transform='translateX(-'+i*100+'%)';if(i===n)setTimeout(()=>{t.style.transition='none';t.style.transform='none';t.dataset.i=0},850)})},3200);
 nd.addEventListener('click',()=>nd.close());ed.addEventListener('click',e=>{if(!e.target.closest('.pv,.nx'))ed.close()});ed.addEventListener('close',()=>clearInterval(window._sl));
-(async()=>{await load();const t=C.set;$('#c-wa').href=waLink('Hi KSU GECI,');$('#c-wa').textContent='+'+t.wa;$('#wab').href=$('#c-wa').href;$('#c-em').href='mailto:'+t.email;$('#c-em').textContent=t.email;$('#c-ig').href='https://instagram.com/'+t.ig;$('#c-ig').textContent='@'+t.ig;renderDesks();renderStats();renderNotifs();renderEvents()})();
+(async()=>{await load();const t=C.set;$('#c-wa').href=waLink('Hi KSU GECI,');$('#c-wa').textContent='+'+t.wa;$('#wab').href=$('#c-wa').href;$('#c-em').href='mailto:'+t.email;$('#c-em').textContent=t.email;$('#c-ig').href='https://instagram.com/'+t.ig;$('#c-ig').textContent='@'+t.ig;renderDesks();renderStats();renderNotifs();renderEvents();attachReveals()})();
 </script>
 </body>
 </html>
