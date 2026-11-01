@@ -74,20 +74,21 @@ header.scrolled .logo span{color:#0b2a55}header.scrolled nav a{color:var(--mu)}h
 header.scrolled .ib{background:var(--cd);border-color:var(--bd);color:var(--tx)}
 h2{font-size:21px}.wrap{display:block;max-width:1080px}
 .tick em{animation:none;border-radius:3px}
-.hero{position:relative;padding:0;overflow:hidden;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:flex-start;color:#fff;background:#0b2a55;box-sizing:border-box}.hero::before{display:none}
-.hb-pic{position:absolute;inset:0;width:100%;height:100%;display:block}
-.hb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 32s ease-in-out infinite alternate}@keyframes kb{to{transform:scale(1.07)}}
-.hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,30,66,.52) 0%,rgba(9,30,66,.32) 40%,rgba(9,30,66,.8) 100%),linear-gradient(90deg,rgba(9,30,66,.85) 0%,rgba(9,30,66,.45) 60%,rgba(9,30,66,.15) 100%)}
-.fog{position:absolute;inset:auto 0 0 0;height:75%;z-index:2;overflow:hidden;pointer-events:none}
-.fog i{position:absolute;bottom:-12%;left:-60%;width:220%;height:100%;background:radial-gradient(ellipse 18% 40% at 12% 60%,rgba(255,255,255,.55),transparent),radial-gradient(ellipse 22% 45% at 38% 70%,rgba(255,255,255,.45),transparent),radial-gradient(ellipse 20% 38% at 62% 55%,rgba(255,255,255,.5),transparent),radial-gradient(ellipse 18% 42% at 88% 68%,rgba(255,255,255,.45),transparent);filter:blur(22px);opacity:.7;animation:fg 38s linear infinite alternate;will-change:transform}
-.fog i+i{bottom:-20%;opacity:.5;animation-duration:56s;animation-direction:alternate-reverse}@keyframes fg{to{transform:translateX(28%)}}
-.hin{position:relative;z-index:3;width:100%;max-width:1180px;margin:0;padding:clamp(90px,13vh,140px) clamp(18px,3.5vw,52px) clamp(60px,8vh,90px)}
-.hero .kick{color:#bcd4f5;font-weight:600;font-size:clamp(12px,1.4vw,14px);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:12px}
-.hero h1{font-size:clamp(32px,5.5vw,54px);font-weight:700;line-height:1.12;letter-spacing:-1px;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.5);margin-bottom:12px}
-.hero p{color:#e5effa;max-width:580px;font-size:clamp(15px,1.8vw,18px);margin:14px 0 24px;line-height:1.5;text-shadow:0 1px 8px rgba(0,0,0,.4)}
-.hero .btn{padding:12px 22px;font-size:15px;border-radius:10px}
-.btn.w{background:#fff;color:#0b2a55}.btn.o{background:transparent;border:1px solid #ffffffaa;color:#fff}
-.sc-cue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:4px;color:#fff;text-decoration:none;font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.85;cursor:pointer;animation:scCue 2.2s ease-in-out infinite}.sc-cue:hover{opacity:1;color:#fff}@keyframes scCue{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+.hero{position:relative;padding:0;overflow:hidden;width:100%;height:100vh;height:100dvh;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;background:#0266b3;box-sizing:border-box}
+.hero::before,.hero::after,.fog{display:none!important}
+.hb-pic{position:absolute;inset:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.hb{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:cover;object-position:center center;display:block}
+@media(max-aspect-ratio:16/9){.hb{object-fit:contain}}
+.hero-dock{position:absolute;bottom:20px;left:0;right:0;z-index:10;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:auto}
+.hero-dock-actions{display:flex;gap:10px;align-items:center}
+.hero-dock-actions .btn{padding:10px 22px;font-size:14px;border-radius:24px;box-shadow:0 4px 16px rgba(0,0,0,.25);backdrop-filter:blur(8px)}
+.btn.w{background:#fff;color:#0b2a55;font-weight:600}.btn.w:hover{background:#f0f4fa}
+.btn.o{background:rgba(9,30,66,.55);border:1px solid rgba(255,255,255,.5);color:#fff;font-weight:600}.btn.o:hover{background:rgba(9,30,66,.75)}
+.sc-cue{display:flex;flex-direction:column;align-items:center;gap:3px;color:#fff;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.9;cursor:pointer;animation:scCue 2.2s ease-in-out infinite;text-shadow:0 2px 8px rgba(0,0,0,.4)}.sc-cue:hover{opacity:1;color:#fff}@keyframes scCue{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.dash-intro{padding-top:14px;margin-bottom:28px}
+.dash-intro h1{font-size:clamp(26px,4vw,36px);font-weight:700;letter-spacing:-.5px;color:var(--tx);margin:6px 0 10px}
+.dash-intro .kick{color:var(--ac);font-weight:600;font-size:12px;letter-spacing:1.2px;text-transform:uppercase}
+.dash-intro .sub{color:var(--mu);font-size:15px;margin-bottom:0}
 #contact{padding:26px 0 8px}#contact h2{font-size:16px;margin-bottom:10px}
 .cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;font-size:13px}.cg h4{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--mu);margin-bottom:4px}
 .cg ul{list-style:none;padding:0}.cg li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--bd)}.cg li small{display:block;color:var(--mu);font-size:11px}.cg li b{font-weight:600;font-size:13px}.cg li a{color:var(--ac);display:flex;gap:4px;align-items:center;font-size:12px}
@@ -163,10 +164,12 @@ nav{margin-left:auto}
  <button class="ib" id="mb" aria-label="Menu"></button>
 </div></header>
 
-<section class="hero" id="top"><picture class="hb-pic"><source media="(max-width: 768px)" id="hbm-src" srcset="assets/hero-mobile.jpg"><img class="hb" id="hb-img" src="assets/hero.jpg" alt="Government Engineering College Idukki"></picture><div class="fog"><i></i><i></i></div><div class="hin"><div class="kick">Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div><a class="sc-cue" href="#dashboard" aria-label="Explore dashboard"><span>Explore</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10l5 5 5-5"/></svg></a></section>
+<section class="hero" id="top"><picture class="hb-pic"><source media="(max-width: 768px)" id="hbm-src" srcset="assets/hero-mobile.jpg"><img class="hb" id="hb-img" src="assets/hero.jpg" alt="Government Engineering College Idukki"></picture><div class="hero-dock"><div class="hero-dock-actions"><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div><a class="sc-cue" href="#dashboard" aria-label="Explore dashboard"><span>Explore</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10l5 5 5-5"/></svg></a></div></section>
 
 <div class="tick rv" id="dashboard"><div class="in"><em>Updates</em><span id="tk">Loading updates…</span></div></div>
 <div class="wrap"><div class="mn">
+
+<div class="dash-intro rv"><div class="kick">Government Engineering College, Idukki</div><h1>Student support, for you.</h1><p class="sub">Help desks, complaints and events for the KSU GECI unit, all in one place.</p></div>
 
 <section id="desks" class="rv">
  <h2>Help Desks</h2><p class="sub">Choose a desk to get started.</p>
