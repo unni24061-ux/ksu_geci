@@ -69,6 +69,7 @@ header{background:#fff;backdrop-filter:none}.logo img{border-radius:50%}.logo sp
 h2{font-size:21px}.wrap{display:block;max-width:1080px}.desk:hover,.ev:hover{transform:none}.desk:hover{border-color:#9db4d6}
 .tick em{animation:none;border-radius:3px}
 .hero{padding:0;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;color:#fff;background:#0b2a55}.hero::before{display:none}
+.hb-pic{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 32s ease-in-out infinite alternate}@keyframes kb{to{transform:scale(1.07)}}
 .hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,30,66,.85),rgba(9,30,66,.45) 65%,rgba(9,30,66,.15))}
 .fog{position:absolute;inset:auto 0 0 0;height:75%;z-index:2;overflow:hidden;pointer-events:none}
@@ -155,7 +156,7 @@ nav{margin-left:auto}
 
 <div class="tick"><div class="in"><em>Updates</em><span id="tk">Loading updates…</span></div></div>
 
-<section class="hero" id="top"><img class="hb" alt=""><div class="fog"><i></i><i></i></div><div class="hin"><div class="kick">Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div></section>
+<section class="hero" id="top"><picture class="hb-pic"><source media="(max-width: 768px)" id="hbm-src" srcset="assets/hero-mobile.jpg"><img class="hb" id="hb-img" src="assets/hero.jpg" alt="Government Engineering College Idukki"></picture><div class="fog"><i></i><i></i></div><div class="hin"><div class="kick">Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div></section>
 <div class="wrap"><div class="mn">
 
 <section id="desks" class="rv">
@@ -272,7 +273,7 @@ $$('.rv').forEach(e=>io.observe(e));
 $$('.card.stat,.desk').forEach((e,i)=>{e.classList.add('rv');e.style.transitionDelay=i*60+'ms';io.observe(e)});
 
 $('#bell').insertAdjacentHTML('afterbegin',ic('bell',18));$('#mb').innerHTML=ic('menu',18);$$('#contact .e').forEach((e,i)=>e.innerHTML=ic(['wa','mail','ig','phone'][i]));
-$('#lg').src=LOGO;$('.hb').src=HERO;setInterval(()=>{if(document.hidden)return;$$('.ev .tr').forEach(t=>{const n=+t.dataset.n;if(n<2)return;const i=(+t.dataset.i||0)+1;t.dataset.i=i;t.style.transition='transform .8s ease';t.style.transform='translateX(-'+i*100+'%)';if(i===n)setTimeout(()=>{t.style.transition='none';t.style.transform='none';t.dataset.i=0},850)})},3200);
+$('#lg').src=LOGO;if($('#hb-img'))$('#hb-img').src=HERO;if($('#hbm-src'))$('#hbm-src').srcset='assets/hero-mobile.jpg';setInterval(()=>{if(document.hidden)return;$$('.ev .tr').forEach(t=>{const n=+t.dataset.n;if(n<2)return;const i=(+t.dataset.i||0)+1;t.dataset.i=i;t.style.transition='transform .8s ease';t.style.transform='translateX(-'+i*100+'%)';if(i===n)setTimeout(()=>{t.style.transition='none';t.style.transform='none';t.dataset.i=0},850)})},3200);
 nd.addEventListener('click',()=>nd.close());ed.addEventListener('click',e=>{if(!e.target.closest('.pv,.nx'))ed.close()});ed.addEventListener('close',()=>clearInterval(window._sl));
 (async()=>{await load();const t=C.set;$('#c-wa').href=waLink('Hi KSU GECI,');$('#c-wa').textContent='+'+t.wa;$('#wab').href=$('#c-wa').href;$('#c-em').href='mailto:'+t.email;$('#c-em').textContent=t.email;$('#c-ig').href='https://instagram.com/'+t.ig;$('#c-ig').textContent='@'+t.ig;renderDesks();renderStats();renderNotifs();renderEvents()})();
 </script>

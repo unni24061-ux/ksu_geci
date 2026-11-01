@@ -69,6 +69,7 @@ header{background:#fff;backdrop-filter:none}.logo img{border-radius:50%}.logo sp
 h2{font-size:21px}.wrap{display:block;max-width:1080px}.desk:hover,.ev:hover{transform:none}.desk:hover{border-color:#9db4d6}
 .tick em{animation:none;border-radius:3px}
 .hero{padding:0;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;color:#fff;background:#0b2a55}.hero::before{display:none}
+.hb-pic{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 32s ease-in-out infinite alternate}@keyframes kb{to{transform:scale(1.07)}}
 .hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,30,66,.85),rgba(9,30,66,.45) 65%,rgba(9,30,66,.15))}
 .fog{position:absolute;inset:auto 0 0 0;height:75%;z-index:2;overflow:hidden;pointer-events:none}
@@ -155,7 +156,7 @@ nav{margin-left:auto}
 
 <div class="tick"><div class="in"><em>Updates</em><span id="tk">Loading updates…</span></div></div>
 
-<section class="hero" id="top"><img class="hb" alt=""><div class="fog"><i></i><i></i></div><div class="hin"><div class="kick">Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div></section>
+<section class="hero" id="top"><picture class="hb-pic"><source media="(max-width: 768px)" id="hbm-src" srcset="assets/hero-mobile.jpg"><img class="hb" id="hb-img" src="assets/hero.jpg" alt="Government Engineering College Idukki"></picture><div class="fog"><i></i><i></i></div><div class="hin"><div class="kick">Government Engineering College, Idukki</div><h1>Student support,<br>for you.</h1><p>Help desks, complaints and events for the KSU GECI unit, in one place.</p><a class="btn w" href="#desks">Get help</a> <a class="btn o" href="#events">View events</a></div></section>
 <div class="wrap"><div class="mn">
 
 <section id="desks" class="rv">
@@ -186,7 +187,7 @@ nav{margin-left:auto}
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 /* ---- Data layer: swap these 2 functions for Firebase/Supabase in production ---- */
-const LOGO='assets/logo.jpg',HERO='assets/hero.jpg',IA='assets/a.jpg',IB='assets/b.jpg';
+const LOGO='assets/logo.jpg',HERO='assets/hero.jpg',HERO_M='assets/hero-mobile.jpg',IA='assets/a.jpg',IB='assets/b.jpg';
 const P={users:`<path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M22 21v-2a4 4 0 0 0-3-3.87'/><path d='M16 3.13a4 4 0 0 1 0 7.75'/>`,cap:`<path d='M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z'/><path d='M22 10v6'/><path d='M6 12.5V16a6 3 0 0 0 12 0v-3.5'/>`,bld:`<path d='M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z'/><path d='M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2'/><path d='M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2'/><path d='M10 6h4M10 10h4M10 14h4M10 18h4'/>`,bed:`<path d='M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8'/><path d='M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4'/><path d='M12 4v6M2 18h20'/>`,doc:`<path d='M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z'/><path d='M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8'/>`,msg:`<path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/>`,wa:`<path d='M7.9 20A9 9 0 1 0 4 16.1L2 22Z'/>`,phone:`<path d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z'/>`,mail:`<rect width='20' height='16' x='2' y='4' rx='2'/><path d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'/>`,ig:`<rect width='20' height='20' x='2' y='2' rx='5'/><path d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'/><path d='M17.5 6.5h.01'/>`,bell:`<path d='M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9'/><path d='M10.3 21a1.94 1.94 0 0 0 3.4 0'/>`,moon:`<path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/>`,menu:`<path d='M4 6h16M4 12h16M4 18h16'/>`,cal:`<path d='M8 2v4M16 2v4'/><rect width='18' height='18' x='3' y='4' rx='2'/><path d='M3 10h18'/>`};
 const ic=(n,s=20)=>`<svg width='${s}' height='${s}' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>${P[n]}</svg>`;
 const IC={admission:'cap',college:'bld',hostel:'bed',complaint:'doc',message:'msg',priyadarshini:'users'};
@@ -273,7 +274,7 @@ $$('.rv').forEach(e=>io.observe(e));
 $$('.card.stat,.desk').forEach((e,i)=>{e.classList.add('rv');e.style.transitionDelay=i*60+'ms';io.observe(e)});
 
 $('#bell').insertAdjacentHTML('afterbegin',ic('bell',18));$('#mb').innerHTML=ic('menu',18);$$('#contact .e').forEach((e,i)=>e.innerHTML=ic(['wa','mail','ig','phone'][i]));
-$('#lg').src=LOGO;$('.hb').src=HERO;setInterval(()=>{if(document.hidden)return;$$('.ev .tr').forEach(t=>{const n=+t.dataset.n;if(n<2)return;const i=(+t.dataset.i||0)+1;t.dataset.i=i;t.style.transition='transform .8s ease';t.style.transform='translateX(-'+i*100+'%)';if(i===n)setTimeout(()=>{t.style.transition='none';t.style.transform='none';t.dataset.i=0},850)})},3200);
+$('#lg').src=LOGO;if($('#hb-img'))$('#hb-img').src=HERO;if($('#hbm-src'))$('#hbm-src').srcset=HERO_M;setInterval(()=>{if(document.hidden)return;$$('.ev .tr').forEach(t=>{const n=+t.dataset.n;if(n<2)return;const i=(+t.dataset.i||0)+1;t.dataset.i=i;t.style.transition='transform .8s ease';t.style.transform='translateX(-'+i*100+'%)';if(i===n)setTimeout(()=>{t.style.transition='none';t.style.transform='none';t.dataset.i=0},850)})},3200);
 nd.addEventListener('click',()=>nd.close());ed.addEventListener('click',e=>{if(!e.target.closest('.pv,.nx'))ed.close()});ed.addEventListener('close',()=>clearInterval(window._sl));
 (async()=>{await load();const t=C.set;$('#c-wa').href=waLink('Hi KSU GECI,');$('#c-wa').textContent='+'+t.wa;$('#wab').href=$('#c-wa').href;$('#c-em').href='mailto:'+t.email;$('#c-em').textContent=t.email;$('#c-ig').href='https://instagram.com/'+t.ig;$('#c-ig').textContent='@'+t.ig;renderDesks();renderStats();renderNotifs();renderEvents()})();
 </script>
