@@ -3,6 +3,6 @@
 // Project Settings > API > Project URL & anon/public API Key
 
 window.KSU = {
-  url: 'https://YOUR-PROJECT-ID.supabase.co',
-  key: 'YOUR-ANON-PUBLIC-KEY'
+  url: 'https://okzycihwiwesbzcznmlb.supabase.co',
+  key: 'sb_publishable_LsmvWn1jl4Urnma_emlJ0g_AYBvi4kP'
 };
