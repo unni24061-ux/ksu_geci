@@ -183,7 +183,7 @@ nav{margin-left:auto}
  <div class="grid" id="eg" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))"></div>
 </section>
 
-<section id="contact" class="rv"><h2>Contact</h2><div class="cg"><div><h4>KSU GECI Team</h4><ul id="l-ksu"></ul></div><div><h4>College Officials</h4><ul id="l-col"></ul></div><div><h4>Reach us</h4><ul><li><span>WhatsApp</span><a id="c-wa" target="_blank" rel="noopener">+91 90000 00000</a></li><li><span>Email</span><a id="c-em" href="mailto:ksu.geci@example.com">ksu.geci@example.com</a></li><li><span>Instagram</span><a id="c-ig" href="https://instagram.com/ksu_geci" target="_blank" rel="noopener">@ksu_geci</a></li></ul></div></div></section>
+<section id="contact" class="rv"><h2>Contact</h2><div class="cg"><div><h4>KSU GECI Team</h4><ul id="l-ksu"></ul></div><div><h4>College Officials</h4><ul id="l-col"></ul></div><div><h4>Reach us</h4><ul><li><span>WhatsApp</span><a id="c-wa" target="_blank" rel="noopener">+91 90000 00000</a></li><li><span>Email</span><a id="c-em" href="mailto:ksu.geci@example.com">ksu.geci@example.com</a></li><li><span>Instagram</span><a id="c-ig" href="https://www.instagram.com/ksu_geci?obrf=MnBzY3Z3ejZybXVm&utm_source=qr" target="_blank" rel="noopener">@ksu_geci</a></li></ul></div></div></section>
 
 </div></div>
 <footer>© KSU GECI · Built for students </footer>
@@ -309,7 +309,7 @@ attachReveals();
 $('#bell').insertAdjacentHTML('afterbegin',ic('bell',18));$('#mb').innerHTML=ic('menu',18);$$('#contact .e').forEach((e,i)=>e.innerHTML=ic(['wa','mail','ig','phone'][i]));
 $('#lg').src=LOGO;if($('#hb-img'))$('#hb-img').src=HERO;if($('#hbm-src'))$('#hbm-src').srcset=HERO_M;setInterval(()=>{if(document.hidden)return;$$('.ev .tr').forEach(t=>{const n=+t.dataset.n;if(n<2)return;const i=(+t.dataset.i||0)+1;t.dataset.i=i;t.style.transition='transform .8s ease';t.style.transform='translateX(-'+i*100+'%)';if(i===n)setTimeout(()=>{t.style.transition='none';t.style.transform='none';t.dataset.i=0},850)})},3200);
 nd.addEventListener('click',()=>nd.close());ed.addEventListener('click',e=>{if(!e.target.closest('.pv,.nx'))ed.close()});ed.addEventListener('close',()=>clearInterval(window._sl));
-(async()=>{await load();const t=C.set;$('#c-wa').href=waLink('Hi KSU GECI,');$('#c-wa').textContent='+'+t.wa;$('#wab').href=$('#c-wa').href;$('#c-em').href='mailto:'+t.email;$('#c-em').textContent=t.email;$('#c-ig').href='https://instagram.com/'+t.ig;$('#c-ig').textContent='@'+t.ig;renderDesks();renderStats();renderNotifs();renderEvents();attachReveals()})();
+(async()=>{await load();const t=C.set;$('#c-wa').href=waLink('Hi KSU GECI,');$('#c-wa').textContent='+'+t.wa;$('#wab').href=$('#c-wa').href;$('#c-em').href='mailto:'+t.email;$('#c-em').textContent=t.email;const igUrl=t.ig?(t.ig.startsWith('http')?t.ig:'https://www.instagram.com/'+t.ig.replace(/^@/,'')+'?obrf=MnBzY3Z3ejZybXVm&utm_source=qr'):'https://www.instagram.com/ksu_geci?obrf=MnBzY3Z3ejZybXVm&utm_source=qr';$('#c-ig').href=igUrl;$('#c-ig').textContent='@'+(t.ig?t.ig.replace(/^@/,'').split('?')[0].replace(/.*instagram\.com\//,'').replace(/\/$/,''):'ksu_geci');renderDesks();renderStats();renderNotifs();renderEvents();attachReveals()})();
 </script>
 </body>
 </html>
