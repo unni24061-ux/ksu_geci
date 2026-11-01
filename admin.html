@@ -1,45 +1,154 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
-<title>KSU GECI – Admin</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>KSU GECI – Admin Dashboard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-*{box-sizing:border-box}body{margin:0;font:14px/1.5 Inter,system-ui,sans-serif;color:#1b2433;background:#f5f7fa}
-.box,.box2{background:#fff;border:1px solid #e3e8ef;border-radius:8px;padding:18px;display:grid;gap:12px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,0.03)}.box{max-width:340px;margin:12vh auto}
-h3{margin:4px 0 0;font-size:16px;color:#0b2a55}small{color:#5f6b7a}
-input,select,textarea,button{font:inherit;padding:9px 12px;border:1px solid #d5dce6;border-radius:6px;background:#fff;color:inherit;width:100%}
-button{width:auto;cursor:pointer;background:#134a9e;color:#fff;border-color:#134a9e;font-weight:500;transition:.2s}
-button:hover{background:#0e397c}
-button.d{background:#fff;color:#a12b2b;border-color:#e3b9b9;transition:.2s}
-button.d:hover{background:#a12b2b;color:#fff;border-color:#a12b2b}
+:root{
+  --bg:#f8fafc;--card:#ffffff;--tx:#0f172a;--mu:#64748b;--bd:#e2e8f0;
+  --ac:#134a9e;--ach:#0c3574;--dn:#dc2626;--dnh:#b91c1c;--ok:#16a34a;--wr:#d97706;
+  --pill-p:#fef3c7;--pill-pt:#92400e;--pill-u:#e0e7ff;--pill-ut:#3730a3;
+  --pill-r:#dcfce7;--pill-rt:#166534;--pill-j:#fee2e2;--pill-jt:#991b1b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:13.5px/1.5 Inter,system-ui,-apple-system,sans-serif;color:var(--tx);background:var(--bg);min-height:100vh}
+input,select,textarea,button{font:inherit;color:inherit}
+button{cursor:pointer;border-radius:6px;border:1px solid transparent;padding:7px 12px;font-weight:500;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:.15s}
+button:active{transform:scale(.98)}
 button:disabled{opacity:.5;cursor:not-allowed}
-header{background:#fff;border-bottom:1px solid #e3e8ef;padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}header b{color:#0b2a55;font-size:16px}
-#tabs{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}#tabs button{background:#fff;color:#1b2433;border-color:#e3e8ef}#tabs button.on{background:#134a9e;color:#fff}
-main{max-width:920px;margin:20px auto;padding:0 16px}
-.it{background:#fff;border:1px solid #e3e8ef;border-radius:8px;padding:14px;margin-bottom:10px;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;box-shadow:0 1px 2px rgba(0,0,0,0.02)}
-.it>p{flex-basis:100%;margin:4px 0;color:#334155}
-.r{display:grid;grid-template-columns:150px 1fr auto auto;gap:6px;flex-basis:100%}.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.sub-bar{display:flex;justify-content:space-between;align-items:center;margin:16px 0 10px;flex-wrap:wrap;gap:8px}
-.sub-bar b{color:#0b2a55;font-size:14px}
-.th{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0}.th span{position:relative;display:inline-block;border:1px solid #e3e8ef;border-radius:6px;padding:2px;background:#f8fafc}
-.th img{width:90px;height:60px;object-fit:cover;border-radius:4px;display:block}
-.th button{position:absolute;top:-6px;right:-6px;width:22px;height:22px;padding:0;border-radius:50%;background:#a12b2b;color:#fff;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;box-shadow:0 1px 3px rgba(0,0,0,0.3);cursor:pointer}
-.th button:hover{background:#791d1d}
-#msg{position:fixed;bottom:20px;left:50%;transform:translate(-50%,80px);background:#1b2433;color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,0.15);transition:.3s cubic-bezier(.2,.8,.2,1);z-index:999;pointer-events:none}
+
+.btn-p{background:var(--ac);color:#fff}.btn-p:hover{background:var(--ach)}
+.btn-s{background:#fff;border-color:var(--bd);color:var(--tx)}.btn-s:hover{background:#f1f5f9;border-color:#cbd5e1}
+.btn-d{background:#fff;border-color:#fecaca;color:var(--dn)}.btn-d:hover{background:var(--dn);color:#fff;border-color:var(--dn)}
+.btn-sm{padding:4px 8px;font-size:12px;border-radius:5px}
+
+.login-wrap{max-width:340px;margin:14vh auto 0;background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:24px;box-shadow:0 4px 16px rgba(0,0,0,0.04);display:grid;gap:12px}
+.login-wrap h2{font-size:18px;color:var(--ac);display:flex;align-items:center;gap:8px}
+
+header{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--bd);box-shadow:0 1px 3px rgba(0,0,0,0.02)}
+.header-in{max-width:1100px;margin:auto;padding:8px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;color:var(--ac)}
+.brand span{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 2px rgba(22,163,74,0.2)}
+.brand small{font-size:10px;font-weight:600;background:#e2e8f0;color:#475569;padding:1px 5px;border-radius:4px;letter-spacing:.5px}
+
+nav.tabs{display:flex;gap:4px;margin-left:auto;overflow-x:auto;padding:2px 0}
+nav.tabs button{background:transparent;border:0;color:var(--mu);padding:7px 11px;font-size:13px;border-radius:6px;white-space:nowrap}
+nav.tabs button:hover{background:#f1f5f9;color:var(--tx)}
+nav.tabs button.on{background:var(--ac);color:#fff;font-weight:600}
+nav.tabs .badge{font-size:10.5px;padding:1px 6px;border-radius:10px;background:rgba(0,0,0,0.08);margin-left:2px}
+nav.tabs button.on .badge{background:rgba(255,255,255,0.25);color:#fff}
+
+.hdr-actions{display:flex;align-items:center;gap:6px}
+
+main{max-width:1100px;margin:16px auto;padding:0 16px 40px}
+
+/* Compact layout tools */
+.top-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.search-box{position:relative;flex:1;min-width:200px;max-width:320px}
+.search-box input{width:100%;padding:6px 10px 6px 30px;border:1px solid var(--bd);border-radius:6px;background:#fff;font-size:13px}
+.search-box svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--mu);pointer-events:none}
+
+.collapsible{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:14px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,0.02)}
+.collapsible[hidden]{display:none}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-grid{display:grid;gap:10px}
+input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--bd);border-radius:6px;background:#fff}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ac);border-color:transparent}
+
+/* Compact items list */
+.card-it{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;margin-bottom:8px;transition:border-color .15s}
+.card-it:hover{border-color:#cbd5e1}
+
+/* Status pills */
+.pill{font-size:11px;font-weight:600;padding:2px 8px;border-radius:12px;display:inline-flex;align-items:center;gap:4px;border:1px solid transparent}
+.pill-Pending{background:var(--pill-p);color:var(--pill-pt);border-color:#fde68a}
+.pill-Under-review{background:var(--pill-u);color:var(--pill-ut);border-color:#c7d2fe}
+.pill-Resolved{background:var(--pill-r);color:var(--pill-rt);border-color:#bbf7d0}
+.pill-Rejected{background:var(--pill-j);color:var(--pill-jt);border-color:#fecaca}
+
+.tid{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--ac);background:#e0e7ff;padding:2px 6px;border-radius:4px;cursor:pointer}
+.tid:hover{background:#c7d2fe}
+
+/* Photo strip */
+.th-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.th-wrap span{position:relative;display:inline-block;border:1px solid var(--bd);border-radius:6px;padding:2px;background:#fff}
+.th-wrap img{width:76px;height:52px;object-fit:cover;border-radius:4px;display:block}
+.th-wrap button.del-img{position:absolute;top:-6px;right:-6px;width:20px;height:20px;padding:0;border-radius:50%;background:var(--dn);color:#fff;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,0.25)}
+
+/* Toast feedback */
+#msg{position:fixed;bottom:18px;left:50%;transform:translate(-50%,70px);background:var(--tx);color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,0.2);transition:.25s cubic-bezier(.2,.8,.2,1);z-index:999;pointer-events:none}
 #msg.s{transform:translate(-50%,0)}
-@media(max-width:620px){.r,.g2{grid-template-columns:1fr}}
-</style></head><body>
-<form id="lf" class="box"><h3>KSU GECI Admin</h3><input name="email" type="email" placeholder="Email" required autocomplete="username"><input name="pw" type="password" placeholder="Password" required autocomplete="current-password"><button>Sign in</button><small id="le" style="color:#a12b2b"></small></form>
-<div id="app" hidden><header><b>KSU GECI Admin</b><div id="tabs"></div><button id="out" class="d">Sign out</button></header><main id="v"></main></div>
+
+@media(max-width:680px){
+  .g2{grid-template-columns:1fr}
+  .header-in{padding:8px 12px}
+  nav.tabs{width:100%;order:3;margin-left:0}
+  .top-bar{flex-direction:column;align-items:stretch}
+  .search-box{max-width:none}
+}
+</style>
+</head>
+<body>
+
+<form id="lf" class="login-wrap">
+  <h2>KSU GECI Admin</h2>
+  <small style="color:var(--mu);margin-top:-6px">Sign in with authorized administrator credentials.</small>
+  <input name="email" type="email" placeholder="Email address" required autocomplete="username">
+  <input name="pw" type="password" placeholder="Password" required autocomplete="current-password">
+  <button class="btn-p">Sign in</button>
+  <small id="le" style="color:var(--dn);font-weight:500"></small>
+</form>
+
+<div id="app" hidden>
+  <header>
+    <div class="header-in">
+      <div class="brand">
+        <span></span>KSU GECI Admin <small>PORTAL</small>
+      </div>
+      <nav class="tabs" id="tabs"></nav>
+      <div class="hdr-actions">
+        <a href="index.html" target="_blank" rel="noopener" class="btn-s btn-sm" title="View live student portal" style="text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+          Live Site <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <button id="out" class="btn-d btn-sm" title="Sign out">Exit</button>
+      </div>
+    </div>
+  </header>
+  <main id="v"></main>
+</div>
+
 <div id="msg"></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script><script src="config.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
 <script>
-const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const LIVE=!!(window.KSU&&KSU.url&&!KSU.url.includes('YOUR-')&&window.supabase);
 const sb=LIVE?supabase.createClient(KSU.url,KSU.key):null;
-const msg=t=>{const m=$('#msg');m.textContent=t;m.classList.add('s');clearTimeout(m._t);m._t=setTimeout(()=>m.classList.remove('s'),2400)};
+
+const ic=(n,s=14)=>{
+  const P={
+    plus:"<path d='M12 5v14M5 12h14'/>",
+    trash:"<path d='M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/>",
+    edit:"<path d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/><path d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'/>",
+    wa:"<path d='M7.9 20A9 9 0 1 0 4 16.1L2 22Z'/>",
+    phone:"<path d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z'/>",
+    copy:"<rect width='14' height='14' x='8' y='8' rx='2' ry='2'/><path d='M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2'/>",
+    search:"<circle cx='11' cy='11' r='8'/><path d='m21 21-4.3-4.3'/>",
+    check:"<polyline points='20 6 9 17 4 12'/>"
+  };
+  return `<svg width='${s}' height='${s}' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>${P[n]||''}</svg>`;
+};
+
+const msg=t=>{const m=$('#msg');m.textContent=t;m.classList.add('s');clearTimeout(m._t);m._t=setTimeout(()=>m.classList.remove('s'),2200)};
 const ok=r=>msg(r&&r.error?'Error: '+r.error.message:'Saved');
 const show=on=>{$('#lf').hidden=on;$('#app').hidden=!on};
 
-// Extract filename path from Supabase storage URL
 const getStoragePath=url=>{
   if(!url||typeof url!=='string')return null;
   const prefix='/storage/v1/object/public/events/';
@@ -49,155 +158,317 @@ const getStoragePath=url=>{
   return null;
 };
 
+const T={cmp:'Complaints',not:'Notifications',ev:'Events',con:'Contacts',help:'Help Desks'};
+let COUNTS={cmp:0,not:0,ev:0};
+
+async function updateBadgeCounts(){
+  if(!LIVE)return;
+  try{
+    const [c,n,e]=await Promise.all([
+      sb.from('complaints').select('id',{count:'exact',head:true}),
+      sb.from('notifications').select('id',{count:'exact',head:true}),
+      sb.from('events').select('id',{count:'exact',head:true})
+    ]);
+    COUNTS={cmp:c.count||0,not:n.count||0,ev:e.count||0};
+    drawTabs();
+  }catch(err){}
+}
+
+function drawTabs(activeTab='cmp'){
+  $('#tabs').innerHTML=Object.entries(T).map(([k,v])=>{
+    const b=COUNTS[k]!==undefined?`<span class="badge">${COUNTS[k]}</span>`:'';
+    return `<button data-t="${k}" class="${k===activeTab?'on':''}">${v}${b}</button>`;
+  }).join('');
+}
+
 async function boot(){
-  if(!LIVE){$('#le').textContent='Please set your Supabase URL & Key in config.js first.';return show(false)}
-  const {data:{session}}=await sb.auth.getSession();if(!session)return show(false);
-  const r=await sb.rpc('is_admin');if(!r.data){await sb.auth.signOut();$('#le').textContent='This account is not an admin.';return show(false)}
-  show(true);go('cmp');
+  if(!LIVE){$('#le').textContent='Configure your Supabase URL & Key in config.js first.';return show(false)}
+  const {data:{session}}=await sb.auth.getSession();
+  if(!session)return show(false);
+  const r=await sb.rpc('is_admin');
+  if(!r.data){await sb.auth.signOut();$('#le').textContent='This account is not an authorized administrator.';return show(false)}
+  show(true);
+  await updateBadgeCounts();
+  go('cmp');
 }
 
 $('#lf').onsubmit=async e=>{
   e.preventDefault();
-  if(!LIVE){$('#le').textContent='Please set your Supabase URL & Key in config.js first.';return}
+  if(!LIVE){$('#le').textContent='Configure your Supabase URL & Key in config.js first.';return}
   const f=e.target,r=await sb.auth.signInWithPassword({email:f.email.value,password:f.pw.value});
   if(r.error){$('#le').textContent=r.error.message;return}
   boot();
 };
 $('#out').onclick=async()=>{if(sb)await sb.auth.signOut();show(false)};
 
-const T={cmp:'Complaints',not:'Notifications',ev:'Events',con:'Contacts',help:'Help desks'};
-$('#tabs').innerHTML=Object.entries(T).map(([k,v])=>`<button data-t="${k}">${v}</button>`).join('');
-$('#tabs').onclick=e=>{const t=e.target.dataset.t;if(t)go(t)};
-function go(t){document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));({cmp:vCmp,not:vNot,ev:vEv,con:vCon,help:vHelp})[t]()}
+$('#tabs').onclick=e=>{const t=e.target.closest('[data-t]')?.dataset.t;if(t)go(t)};
 
-const ST=['Pending','Under review','Resolved','Rejected'];let EV={id:null,imgs:[]};
+function go(t){
+  drawTabs(t);
+  ({cmp:vCmp,not:vNot,ev:vEv,con:vCon,help:vHelp})[t]();
+}
 
+const ST=['Pending','Under review','Resolved','Rejected'];
+let EV={id:null,imgs:[]};
+
+/* ---- Actions Dispatcher ---- */
 const A={
-  async sv(it){ok(await sb.from('complaints').update({status:it.querySelector('select').value,remark:it.querySelector('input').value}).eq('id',it.dataset.id));it.dataset.s=it.querySelector('select').value},
-  async rm(it){if(confirm('Delete this complaint record permanently?')){msg('Deleting…');const r=await sb.from('complaints').delete().eq('id',it.dataset.id);if(r.error)msg('Error: '+r.error.message);else{it.remove();msg('Complaint deleted');}}},
-  
-  // Delete individual notification
+  async sv(it){
+    msg('Updating…');
+    const status=it.querySelector('select').value;
+    const remark=it.querySelector('input.note-in').value;
+    const r=await sb.from('complaints').update({status,remark}).eq('id',it.dataset.id);
+    if(r.error)msg('Error: '+r.error.message);
+    else{
+      it.dataset.s=status;
+      const p=it.querySelector('.pill');
+      if(p){
+        p.className='pill pill-'+status.replace(/\s+/g,'-');
+        p.textContent=status;
+      }
+      msg('Complaint updated');
+    }
+  },
+  async rm(it){
+    if(!confirm('Permanently delete this complaint record?'))return;
+    msg('Deleting…');
+    const r=await sb.from('complaints').delete().eq('id',it.dataset.id);
+    if(r.error)msg('Error: '+r.error.message);
+    else{it.remove();msg('Complaint deleted');updateBadgeCounts();}
+  },
+  async copy(it,b){
+    const id=it.dataset.id;
+    try{await navigator.clipboard.writeText(id);msg('Copied: '+id);}
+    catch(e){prompt('Copy ID:',id);}
+  },
   async nd(it){
-    if(!confirm('Are you sure you want to delete this notification?'))return;
+    if(!confirm('Delete this notification?'))return;
     msg('Deleting…');
     const r=await sb.from('notifications').delete().eq('id',it.dataset.id);
     if(r.error)msg('Error: '+r.error.message);
-    else{it.remove();msg('Notification deleted');}
+    else{it.remove();msg('Notification deleted');updateBadgeCounts();}
   },
-
-  // Delete all notifications
   async clearNotifs(){
-    if(!confirm('Are you sure you want to delete ALL notifications? This cannot be undone.'))return;
-    msg('Deleting all notifications…');
+    if(!confirm('Are you sure you want to delete ALL notifications?'))return;
+    msg('Deleting all…');
     const r=await sb.from('notifications').delete().neq('id',0);
     if(r.error)msg('Error: '+r.error.message);
-    else{msg('All notifications deleted');vNot();}
+    else{msg('All notifications cleared');vNot();updateBadgeCounts();}
   },
-
-  // Edit event
   async ed(it){
     msg('Loading event…');
     const r=await sb.from('events').select('*').eq('id',it.dataset.id).single();
-    if(r.data){EV={id:r.data.id,imgs:Array.isArray(r.data.images)?r.data.images:[]};vEv(r.data);}
+    if(r.data){
+      EV={id:r.data.id,imgs:Array.isArray(r.data.images)?r.data.images:[]};
+      vEv(r.data,true);
+    }
   },
-
-  // Delete individual event and its storage images
   async ev(it){
-    if(!confirm('Are you sure you want to delete this event and all its uploaded photos?'))return;
+    if(!confirm('Delete this event and ALL its uploaded photos from storage?'))return;
     msg('Deleting event & photos…');
     const id=it.dataset.id;
     try{
       const {data:evData}=await sb.from('events').select('images').eq('id',id).single();
       if(evData&&Array.isArray(evData.images)&&evData.images.length){
         const paths=evData.images.map(getStoragePath).filter(Boolean);
-        if(paths.length){await sb.storage.from('events').remove(paths);}
+        if(paths.length)await sb.storage.from('events').remove(paths);
       }
       const r=await sb.from('events').delete().eq('id',id);
       if(r.error)msg('Error: '+r.error.message);
-      else{
-        it.remove();
-        msg('Event and all photos deleted');
-        if(EV.id==id){EV={id:null,imgs:[]};vEv();}
-      }
+      else{it.remove();msg('Event and photos deleted');updateBadgeCounts();}
     }catch(err){msg('Error: '+(err.message||err));}
   },
-
-  // Delete single photo from event and Supabase storage
   async im(it,b){
     const idx=+b.dataset.i;
     const url=EV.imgs[idx];
-    if(!confirm('Permanently delete this photo from cloud storage?'))return;
+    if(!confirm('Delete this photo from storage?'))return;
     msg('Deleting photo…');
     const path=getStoragePath(url);
-    if(path){
-      try{await sb.storage.from('events').remove([path]);}catch(e){console.error('Storage remove error:',e);}
-    }
+    if(path){try{await sb.storage.from('events').remove([path]);}catch(e){}}
     EV.imgs.splice(idx,1);
-    if(EV.id){
-      await sb.from('events').update({images:EV.imgs}).eq('id',EV.id);
-    }
+    if(EV.id)await sb.from('events').update({images:EV.imgs}).eq('id',EV.id);
     drawImgs();
     msg('Photo deleted');
   },
-
-  // Delete all events and all their storage images
   async clearAllEvents(){
-    if(!confirm('Are you sure you want to delete ALL events and all uploaded photos? This cannot be undone.'))return;
-    msg('Deleting all events & photos…');
+    if(!confirm('Delete ALL events and all their photos? This cannot be undone.'))return;
+    msg('Deleting all events…');
     try{
       const {data:allEv}=await sb.from('events').select('images');
       if(allEv){
         const allPaths=[];
         allEv.forEach(e=>{if(Array.isArray(e.images))e.images.map(getStoragePath).filter(Boolean).forEach(p=>allPaths.push(p));});
-        if(allPaths.length){await sb.storage.from('events').remove(allPaths);}
+        if(allPaths.length)await sb.storage.from('events').remove(allPaths);
       }
-      const r=await sb.from('events').delete().neq('id',0);
-      if(r.error)msg('Error: '+r.error.message);
-      else{EV={id:null,imgs:[]};msg('All events and photos deleted');vEv();}
+      await sb.from('events').delete().neq('id',0);
+      EV={id:null,imgs:[]};
+      msg('All events and photos deleted');
+      vEv();
+      updateBadgeCounts();
     }catch(err){msg('Error: '+(err.message||err));}
   },
-
-  cx(){EV={id:null,imgs:[]};vEv()}
+  toggleForm(it,b){
+    const targetId=b.dataset.target;
+    const f=$('#'+targetId);
+    if(f){
+      const isHidden=f.hidden;
+      f.hidden=!isHidden;
+      b.classList.toggle('btn-p',!isHidden);
+      b.classList.toggle('btn-s',isHidden);
+      b.innerHTML=isHidden?`${ic('plus',14)} Close Form`:`${ic('plus',14)} Add New`;
+    }
+  },
+  cx(){EV={id:null,imgs:[]};vEv(null,false)}
 };
 
-$('#v').onclick=e=>{const b=e.target.closest('[data-a]');if(b)A[b.dataset.a](b.closest('.it')||b.parentElement,b)};
+$('#v').onclick=e=>{const b=e.target.closest('[data-a]');if(b)A[b.dataset.a](b.closest('.card-it')||b.parentElement,b)};
 
+/* ---- View 1: Complaints ---- */
 async function vCmp(){
+  $('#v').innerHTML='<div style="text-align:center;padding:30px;color:var(--mu)">Loading complaints…</div>';
   const r=await sb.from('complaints').select('*').order('created_at',{ascending:false});
   const L=r.data||[];
-  $('#v').innerHTML=`<p><select id="fl" style="width:auto"><option value="">All Complaints (${L.length})</option>${ST.map(s=>`<option>${s}</option>`).join('')}</select></p><div id="cl">${L.map(c=>`<div class="it" data-id="${c.id}" data-s="${c.status}"><b>${esc(c.subject)}</b><small>${c.id} · ${c.created_at.slice(0,10)} · ${esc(c.sem||'')} ${esc(c.branch||'')}</small><p>${esc(c.body)}</p><small>${esc(c.name||'—')} · ${esc(c.phone||'—')}</small><div class="r"><select>${ST.map(s=>`<option${s===c.status?' selected':''}>${s}</option>`).join('')}</select><input placeholder="Note visible to the student" value="${esc(c.remark)}"><button data-a="sv">Save</button><button class="d" data-a="rm">Delete</button></div></div>`).join('')||'<p class="box2">No complaints yet.</p>'}</div>`;
-  $('#fl').onchange=e=>document.querySelectorAll('#cl .it').forEach(i=>i.hidden=!!e.target.value&&i.dataset.s!==e.target.value);
+  COUNTS.cmp=L.length;
+  drawTabs('cmp');
+
+  $('#v').innerHTML=`
+    <div class="top-bar">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <select id="fl" style="width:auto;padding:6px 10px;font-size:13px">
+          <option value="">All Statuses (${L.length})</option>
+          ${ST.map(s=>`<option value="${s}">${s}</option>`).join('')}
+        </select>
+        <span style="color:var(--mu);font-size:12px">${L.filter(c=>c.status==='Pending').length} pending review</span>
+      </div>
+      <div class="search-box">
+        ${ic('search',14)}
+        <input id="cq" placeholder="Search ticket, name, branch…">
+      </div>
+    </div>
+    <div id="cl">
+      ${L.map(c=>{
+        const cleanPhone=c.phone?c.phone.replace(/\D/g,''):'';
+        const waLink=cleanPhone?`https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hi '+ (c.name||'Student') +', regarding your KSU GECI grievance ticket '+c.id+': ')}`:'';
+        return `
+        <div class="card-it" data-id="${c.id}" data-s="${c.status}" data-search="${esc((c.id+' '+c.subject+' '+(c.name||'')+' '+(c.branch||'')+' '+(c.sem||'')).toLowerCase())}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap">
+            <div>
+              <span class="tid" data-a="copy" title="Click to copy ticket ID">${c.id}</span>
+              <b style="margin-left:6px;font-size:14px">${esc(c.subject)}</b>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="pill pill-${(c.status||'Pending').replace(/\s+/g,'-')}">${esc(c.status||'Pending')}</span>
+              <small style="color:var(--mu)">${c.created_at.slice(0,10)}</small>
+            </div>
+          </div>
+
+          <p style="margin:8px 0;background:#f8fafc;padding:8px 10px;border-radius:6px;border:1px solid #f1f5f9;color:#334155;line-height:1.45">${esc(c.body)}</p>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--mu);margin-bottom:8px">
+            <div>
+              <b>Student:</b> ${esc(c.name||'Anonymous')}
+              ${c.sem||c.branch?` · ${esc(c.sem||'')} ${esc(c.branch||'')}`:''}
+            </div>
+            ${cleanPhone?`
+              <div style="display:flex;gap:6px">
+                <a href="${waLink}" target="_blank" rel="noopener" class="btn-s btn-sm" style="text-decoration:none;color:#0a7a3d" title="Chat on WhatsApp">
+                  ${ic('wa',13)} WhatsApp
+                </a>
+                <a href="tel:${cleanPhone}" class="btn-s btn-sm" style="text-decoration:none" title="Call student">
+                  ${ic('phone',13)} ${esc(c.phone)}
+                </a>
+              </div>
+            `:''}
+          </div>
+
+          <div class="r" style="display:grid;grid-template-columns:140px 1fr auto auto;gap:6px;align-items:center">
+            <select style="padding:6px 8px;font-size:12.5px">
+              ${ST.map(s=>`<option${s===c.status?' selected':''}>${s}</option>`).join('')}
+            </select>
+            <input class="note-in" placeholder="Reply / note visible to the student" value="${esc(c.remark||'')}" style="padding:6px 10px;font-size:12.5px">
+            <button class="btn-p btn-sm" data-a="sv">${ic('check',12)} Save</button>
+            <button class="btn-d btn-sm" data-a="rm" title="Delete complaint">${ic('trash',12)}</button>
+          </div>
+        </div>`;
+      }).join('')||'<p class="collapsible" style="text-align:center;color:var(--mu)">No complaints submitted yet.</p>'}
+    </div>
+  `;
+
+  const filter=()=>{
+    const status=$('#fl').value.toLowerCase();
+    const query=$('#cq').value.toLowerCase().trim();
+    $$('#cl .card-it').forEach(i=>{
+      const matchStatus=!status||i.dataset.s.toLowerCase()===status;
+      const matchQuery=!query||i.dataset.search.includes(query);
+      i.hidden=!(matchStatus&&matchQuery);
+    });
+  };
+  $('#fl').onchange=filter;
+  $('#cq').oninput=filter;
 }
 
+/* ---- View 2: Notifications ---- */
 async function vNot(){
-  const r=await sb.from('notifications').select('*').order('created_at',{ascending:false}).limit(50);
+  $('#v').innerHTML='<div style="text-align:center;padding:30px;color:var(--mu)">Loading notifications…</div>';
+  const r=await sb.from('notifications').select('*').order('created_at',{ascending:false}).limit(60);
   const L=r.data||[];
+  COUNTS.not=L.length;
+  drawTabs('not');
+
   $('#v').innerHTML=`
-    <form id="nf" class="box2">
-      <h3>New notification</h3>
-      <input name="t" placeholder="e.g. Union meeting Friday 4 PM at Seminar Hall" required>
-      <div><button>Publish notification</button></div>
-    </form>
-    <div class="sub-bar">
-      <b>Published notifications (${L.length})</b>
-      ${L.length?`<button class="d" data-a="clearNotifs" style="font-size:12px;padding:4px 8px">Delete all notifications</button>`:''}
-    </div>
-    ${L.map(n=>`
-      <div class="it" data-id="${n.id}">
-        <span>${esc(n.text)} <small style="display:block;color:#5f6b7a">${n.created_at.slice(0,10)}</small></span>
-        <button class="d" data-a="nd">Delete</button>
+    <div class="top-bar">
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="btn-p btn-sm" data-a="toggleForm" data-target="nf-wrap">${ic('plus',13)} Post Notice</button>
+        ${L.length?`<button class="btn-d btn-sm" data-a="clearNotifs">${ic('trash',12)} Clear All</button>`:''}
+        <span style="color:var(--mu);font-size:12px;margin-left:4px">${L.length} active notice(s)</span>
       </div>
-    `).join('')||'<p class="box2" style="text-align:center;color:#5f6b7a">No notifications published yet.</p>'}
+      <div class="search-box">
+        ${ic('search',14)}
+        <input id="nq" placeholder="Filter announcements…">
+      </div>
+    </div>
+
+    <div id="nf-wrap" class="collapsible" hidden>
+      <h3 style="font-size:14px;margin-bottom:8px;color:var(--ac)">Create Public Announcement</h3>
+      <form id="nf" style="display:grid;gap:8px">
+        <input name="t" placeholder="e.g. Admission Help Desk open at college entrance from 9:30 AM" required>
+        <div style="display:flex;gap:8px">
+          <button class="btn-p btn-sm">${ic('check',13)} Publish to Website</button>
+          <button type="button" class="btn-s btn-sm" data-a="toggleForm" data-target="nf-wrap">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="nl">
+      ${L.map(n=>`
+        <div class="card-it" data-id="${n.id}" data-search="${esc(n.text.toLowerCase())}" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div style="flex:1">
+            <span style="font-size:13.5px;font-weight:500;display:block">${esc(n.text)}</span>
+            <small style="color:var(--mu)">Published ${n.created_at.slice(0,10)}</small>
+          </div>
+          <button class="btn-d btn-sm" data-a="nd" title="Delete notification">${ic('trash',13)} Delete</button>
+        </div>
+      `).join('')||'<p class="collapsible" style="text-align:center;color:var(--mu)">No notifications published yet.</p>'}
+    </div>
   `;
+
   $('#nf').onsubmit=async e=>{
     e.preventDefault();
     const btn=e.target.querySelector('button');
     btn.disabled=true;msg('Publishing…');
-    const r=await sb.from('notifications').insert({text:e.target.t.value});
-    ok(r);vNot();
+    const r=await sb.from('notifications').insert({text:e.target.t.value.trim()});
+    ok(r);
+    vNot();
+    updateBadgeCounts();
+  };
+
+  $('#nq').oninput=e=>{
+    const q=e.target.value.toLowerCase().trim();
+    $$('#nl .card-it').forEach(i=>i.hidden=!!q&&!i.dataset.search.includes(q));
   };
 }
 
+/* ---- Photo Upload Helper ---- */
 const up=file=>new Promise((res,rej)=>{
   const i=new Image();
   i.onload=()=>{
@@ -216,60 +487,91 @@ const up=file=>new Promise((res,rej)=>{
 });
 
 const drawImgs=()=>{
-  $('#im').innerHTML=EV.imgs.map((u,i)=>`
+  const wrap=$('#im');
+  if(!wrap)return;
+  wrap.innerHTML=EV.imgs.map((u,i)=>`
     <span>
-      <img src="${esc(u)}" alt="Event photo">
-      <button type="button" data-a="im" data-i="${i}" title="Delete photo from storage">×</button>
+      <img src="${esc(u)}" alt="Photo">
+      <button type="button" class="del-img" data-a="im" data-i="${i}" title="Delete photo from storage">×</button>
     </span>
   `).join('');
 };
 
-async function vEv(x){
+/* ---- View 3: Events ---- */
+async function vEv(x=null,openForm=false){
+  $('#v').innerHTML='<div style="text-align:center;padding:30px;color:var(--mu)">Loading events…</div>';
+  const r=await sb.from('events').select('*').order('date',{ascending:false});
+  const L=r.data||[];
+  COUNTS.ev=L.length;
+  drawTabs('ev');
+
   x=x&&x.title?x:{};
   if(!x.title&&!EV.id)EV={id:null,imgs:[]};
-  const r=await sb.from('events').select('id,title,date,place,descr,images').order('date',{ascending:false});
-  const L=r.data||[];
+
   $('#v').innerHTML=`
-    <form id="ef" class="box2">
-      <h3>${EV.id?'Edit event (ID: '+EV.id+')':'Add new event'}</h3>
-      <input name="title" placeholder="Event Title" required value="${esc(x.title)}">
-      <div class="g2">
-        <input name="date" type="date" required value="${esc(x.date)}">
-        <input name="place" placeholder="Venue / Place" value="${esc(x.place)}">
+    <div class="top-bar">
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="btn-p btn-sm" data-a="toggleForm" data-target="ef-wrap">
+          ${ic('plus',13)} ${EV.id?'Edit Event #'+EV.id:'New Event'}
+        </button>
+        ${L.length?`<button class="btn-d btn-sm" data-a="clearAllEvents">${ic('trash',12)} Clear All</button>`:''}
+        <span style="color:var(--mu);font-size:12px;margin-left:4px">${L.length} event(s)</span>
       </div>
-      <textarea name="descr" rows="3" placeholder="Event Description">${esc(x.descr)}</textarea>
-      <div>
-        <label style="display:block;margin-bottom:4px;color:#0b2a55;font-weight:500">Upload photos (JPG/PNG, up to 10 photos):</label>
-        <input type="file" accept="image/*" multiple>
+      <div class="search-box">
+        ${ic('search',14)}
+        <input id="eq" placeholder="Search event title, venue…">
       </div>
-      <div id="im" class="th"></div>
-      <div style="display:flex;gap:8px">
-        <button>${EV.id?'Update event':'Publish event'}</button>
-        ${EV.id?'<button type="button" data-a="cx" class="d">Cancel editing</button>':''}
-      </div>
-    </form>
-    <div class="sub-bar">
-      <b>Existing events (${L.length})</b>
-      ${L.length?`<button class="d" data-a="clearAllEvents" style="font-size:12px;padding:4px 8px">Delete all events & photos</button>`:''}
     </div>
-    ${L.map(e=>`
-      <div class="it" data-id="${e.id}">
-        <div style="flex:1;min-width:240px">
-          <b>${esc(e.title)}</b>
-          <small style="display:block;color:#5f6b7a">${e.date} · ${esc(e.place||'Campus')} · ${(e.images||[]).length} photo(s)</small>
+
+    <div id="ef-wrap" class="collapsible" ${openForm?'':'hidden'}>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h3 style="font-size:14px;color:var(--ac)">${EV.id?'Edit Event (ID: '+EV.id+')':'Add New Campus Event'}</h3>
+        ${EV.id?'<button type="button" data-a="cx" class="btn-s btn-sm">Cancel Edit</button>':''}
+      </div>
+      <form id="ef" class="form-grid">
+        <input name="title" placeholder="Event Title (e.g. Freshers' Welcome 2026)" required value="${esc(x.title||'')}">
+        <div class="g2">
+          <input name="date" type="date" required value="${esc(x.date||'')}">
+          <input name="place" placeholder="Venue (e.g. College Auditorium)" value="${esc(x.place||'')}">
+        </div>
+        <textarea name="descr" rows="2" placeholder="Description of the event…">${esc(x.descr||'')}</textarea>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;margin-bottom:4px;color:var(--mu)">Upload photos (JPG/PNG, up to 10 photos):</label>
+          <input type="file" accept="image/*" multiple style="padding:6px">
+        </div>
+        <div id="im" class="th-wrap"></div>
+        <div style="display:flex;gap:8px;margin-top:4px">
+          <button class="btn-p btn-sm">${EV.id?'Save Changes':'Publish Event'}</button>
+          <button type="button" class="btn-s btn-sm" data-a="toggleForm" data-target="ef-wrap">Close</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="el">
+      ${L.map(e=>`
+        <div class="card-it" data-id="${e.id}" data-search="${esc((e.title+' '+(e.place||'')).toLowerCase())}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap">
+            <div>
+              <b style="font-size:14px">${esc(e.title)}</b>
+              <div style="color:var(--mu);font-size:12px;margin-top:2px">
+                📅 ${e.date} · 📍 ${esc(e.place||'Campus')} · 📷 ${(e.images||[]).length} photo(s)
+              </div>
+            </div>
+            <div style="display:flex;gap:6px">
+              <button class="btn-s btn-sm" data-a="ed">${ic('edit',12)} Edit</button>
+              <button class="btn-d btn-sm" data-a="ev">${ic('trash',12)} Delete</button>
+            </div>
+          </div>
+          ${e.descr?`<p style="margin:6px 0 4px;color:#334155;font-size:13px">${esc(e.descr)}</p>`:''}
           ${(e.images&&e.images.length)?`
-            <div class="th" style="margin-top:6px">
-              ${e.images.slice(0,4).map(u=>`<span><img src="${esc(u)}" alt="" style="width:48px;height:32px;object-fit:cover;border-radius:3px"></span>`).join('')}
-              ${e.images.length>4?`<small style="align-self:center;color:#5f6b7a">+${e.images.length-4} more</small>`:''}
+            <div class="th-wrap" style="margin-top:6px">
+              ${e.images.slice(0,5).map(u=>`<span><img src="${esc(u)}" alt="Photo"></span>`).join('')}
+              ${e.images.length>5?`<small style="align-self:center;color:var(--mu);font-size:11.5px">+${e.images.length-5} more</small>`:''}
             </div>
           `:''}
         </div>
-        <div style="display:flex;gap:6px">
-          <button data-a="ed">Edit / Photos</button>
-          <button class="d" data-a="ev">Delete Event</button>
-        </div>
-      </div>
-    `).join('')||'<p class="box2" style="text-align:center;color:#5f6b7a">No events posted yet.</p>'}
+      `).join('')||'<p class="collapsible" style="text-align:center;color:var(--mu)">No events created yet.</p>'}
+    </div>
   `;
   drawImgs();
 
@@ -280,70 +582,110 @@ async function vEv(x){
     try{
       const files=f.querySelector('[type=file]').files;
       for(const file of files){
-        if(EV.imgs.length>=10){msg('Max 10 photos per event');break;}
+        if(EV.imgs.length>=10){msg('Max 10 photos reached');break;}
         EV.imgs.push(await up(file));
       }
-      const row={title:d.title,date:d.date,place:d.place,descr:d.descr,images:EV.imgs};
+      const row={title:d.title.trim(),date:d.date,place:d.place.trim(),descr:d.descr.trim(),images:EV.imgs};
       const res=EV.id?await sb.from('events').update(row).eq('id',EV.id):await sb.from('events').insert(row);
       ok(res);
       EV={id:null,imgs:[]};
-      vEv();
+      vEv(null,false);
+      updateBadgeCounts();
     }catch(err){
       msg('Error: '+(err.message||err));
       b.disabled=false;
     }
   };
+
+  $('#eq').oninput=e=>{
+    const q=e.target.value.toLowerCase().trim();
+    $$('#el .card-it').forEach(i=>i.hidden=!!q&&!i.dataset.search.includes(q));
+  };
 }
 
+/* ---- View 4: Contacts & Channels ---- */
 async function vCon(){
+  $('#v').innerHTML='<div style="text-align:center;padding:30px;color:var(--mu)">Loading contacts…</div>';
   const [p,s]=await Promise.all([sb.from('people').select('*').order('sort'),sb.from('settings').select('*')]);
   const S=Object.fromEntries((s.data||[]).map(x=>[x.key,x.value]));
   const tx=g=>(p.data||[]).filter(x=>x.grp===g).map(x=>[x.role,x.name,x.phone].join(' | ')).join('\n');
+
   $('#v').innerHTML=`
-    <form id="cf" class="box2">
-      <h3>KSU GECI team</h3>
-      <small>One per line: Role | Name | Phone</small>
-      <textarea name="ksu" rows="6">${esc(tx('ksu'))}</textarea>
-      <h3>College officials</h3>
-      <textarea name="col" rows="6">${esc(tx('col'))}</textarea>
-      <h3>Channels & Links</h3>
+    <form id="cf" class="collapsible form-grid">
+      <h3 style="font-size:15px;color:var(--ac)">KSU GECI Representatives</h3>
+      <small style="color:var(--mu)">Format per line: <code>Role | Name | Phone</code></small>
+      <textarea name="ksu" rows="5" style="font-family:monospace;font-size:13px">${esc(tx('ksu'))}</textarea>
+
+      <h3 style="font-size:15px;color:var(--ac);margin-top:6px">College Officials & Key Contacts</h3>
+      <textarea name="col" rows="4" style="font-family:monospace;font-size:13px">${esc(tx('col'))}</textarea>
+
+      <h3 style="font-size:15px;color:var(--ac);margin-top:6px">Public Communication Channels</h3>
       <div class="g2">
-        <input name="wa" placeholder="WhatsApp with country code, e.g. 919876543210" value="${esc(S.wa)}">
-        <input name="email" placeholder="Email" value="${esc(S.email)}">
+        <div>
+          <label style="font-size:12px;font-weight:600;color:var(--mu)">Official WhatsApp (with country code):</label>
+          <input name="wa" placeholder="e.g. 919876543210" value="${esc(S.wa||'')}">
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:600;color:var(--mu)">Support Email:</label>
+          <input name="email" type="email" placeholder="ksu.geci@example.com" value="${esc(S.email||'')}">
+        </div>
       </div>
-      <input name="ig" placeholder="Instagram username (no @)" value="${esc(S.ig)}">
-      <input name="group" placeholder="Admission WhatsApp group link (https://chat.whatsapp.com/…)" value="${esc(S.group)}">
-      <div><button>Save contacts & channels</button></div>
+      <div class="g2">
+        <div>
+          <label style="font-size:12px;font-weight:600;color:var(--mu)">Instagram Handle (without @):</label>
+          <input name="ig" placeholder="ksu_geci" value="${esc(S.ig||'')}">
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:600;color:var(--mu)">Admission Group Link:</label>
+          <input name="group" placeholder="https://chat.whatsapp.com/…" value="${esc(S.group||'')}">
+        </div>
+      </div>
+      <div style="margin-top:4px">
+        <button class="btn-p btn-sm">${ic('check',13)} Save Contacts & Channels</button>
+      </div>
     </form>
   `;
+
   $('#cf').onsubmit=async e=>{
     e.preventDefault();
+    const btn=e.target.querySelector('button');
+    btn.disabled=true;msg('Saving…');
     const d=Object.fromEntries(new FormData(e.target));
     for(const g of['ksu','col']){
       const rows=d[g].split('\n').map(l=>l.split('|').map(x=>x.trim())).filter(a=>a[0]).map((a,i)=>({grp:g,role:a[0],name:a[1]||'',phone:a[2]||'',sort:i}));
       let r=await sb.from('people').delete().eq('grp',g);
-      if(r.error)return ok(r);
-      if(rows.length){r=await sb.from('people').insert(rows);if(r.error)return ok(r);}
+      if(r.error){msg('Error: '+r.error.message);btn.disabled=false;return;}
+      if(rows.length){r=await sb.from('people').insert(rows);if(r.error){msg('Error: '+r.error.message);btn.disabled=false;return;}}
     }
-    ok(await sb.from('settings').upsert(['wa','email','ig','group'].map(k=>({key:k,value:d[k].replace(k==='wa'?/\D/g:/^@/,'')}))))
+    const setRes=await sb.from('settings').upsert(['wa','email','ig','group'].map(k=>({key:k,value:d[k].replace(k==='wa'?/\D/g:/^@/,'')})));
+    ok(setRes);
+    btn.disabled=false;
   };
 }
 
+/* ---- View 5: Help Desks ---- */
 async function vHelp(sel){
+  $('#v').innerHTML='<div style="text-align:center;padding:30px;color:var(--mu)">Loading help desks…</div>';
   const r=await sb.from('helpdesks').select('*').order('slug');
   const L=r.data||[],h=L.find(x=>x.slug===sel)||L[0];
-  if(!h){$('#v').innerHTML='<p>No help desks found. Run the seed section of schema.sql.</p>';return}
+  if(!h){$('#v').innerHTML='<p class="collapsible">No help desks found in database.</p>';return;}
+
   $('#v').innerHTML=`
-    <form id="hf" class="box2">
-      <h3>Edit help desk</h3>
-      <select id="hs">${L.map(x=>`<option value="${x.slug}"${x.slug===h.slug?' selected':''}>${esc(x.title)}</option>`).join('')}</select>
+    <form id="hf" class="collapsible form-grid">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <h3 style="font-size:15px;color:var(--ac)">Manage Help Desk Guides</h3>
+        <select id="hs" style="width:auto;padding:5px 10px;font-size:13px">
+          ${L.map(x=>`<option value="${x.slug}"${x.slug===h.slug?' selected':''}>${esc(x.title)}</option>`).join('')}
+        </select>
+      </div>
       <input name="title" value="${esc(h.title)}" placeholder="Title">
-      <input name="blurb" value="${esc(h.blurb)}" placeholder="Short description">
-      <small>Start each section with # Heading. Lines like Name | Value become a table; other lines become a list.</small>
-      <textarea name="body" rows="10">${esc(h.body)}</textarea>
-      <div><button>Save help desk</button></div>
+      <input name="blurb" value="${esc(h.blurb)}" placeholder="Short sub-headline description">
+      <small style="color:var(--mu)">Use <code># Heading</code> for sections. Use <code>Key | Value</code> for tables.</small>
+      <textarea name="body" rows="9" style="font-family:monospace;font-size:12.5px">${esc(h.body)}</textarea>
+      <div><button class="btn-p btn-sm">${ic('check',13)} Save Help Desk</button></div>
     </form>
   `;
+
   $('#hs').onchange=e=>vHelp(e.target.value);
   $('#hf').onsubmit=async e=>{
     e.preventDefault();
@@ -353,4 +695,6 @@ async function vHelp(sel){
 }
 
 boot();
-</script></body></html>
+</script>
+</body>
+</html>
