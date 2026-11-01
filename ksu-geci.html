@@ -824,8 +824,8 @@
       position: relative;
       padding: 0;
       width: 100%;
-      height: clamp(340px, 38vw, 500px);
-      min-height: 340px;
+      height: clamp(230px, 25vw, 310px);
+      min-height: 230px;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -871,47 +871,47 @@
       max-width: 1180px;
       margin: 0;
       padding-inline: clamp(18px, 3.5vw, 52px);
-      padding-block: 36px
+      padding-block: clamp(14px, 2.2vw, 24px)
     }
 
     .hero .kick {
       color: #bcd4f5;
       font-weight: 600;
-      font-size: clamp(11.5px, 1.4vw, 13.5px);
+      font-size: clamp(11px, 1.2vw, 12.5px);
       letter-spacing: 1.2px;
       text-transform: uppercase;
-      margin-bottom: 10px
+      margin-bottom: 6px
     }
 
     .hero h1 {
-      font-size: clamp(28px, 4.5vw, 44px);
+      font-size: clamp(22px, 3.2vw, 34px);
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -.8px;
       color: #fff;
       text-shadow: 0 2px 14px rgba(0, 0, 0, .5);
-      margin-bottom: 10px
+      margin-bottom: 6px
     }
 
     .hero p {
       color: #e5effa;
-      max-width: 540px;
-      font-size: clamp(14px, 1.6vw, 16px);
-      margin: 0 0 20px;
-      line-height: 1.5;
+      max-width: 520px;
+      font-size: clamp(13px, 1.3vw, 15px);
+      margin: 0 0 14px;
+      line-height: 1.45;
       text-shadow: 0 1px 6px rgba(0, 0, 0, .35)
     }
 
     .hero-btns {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap
     }
 
     .hero-btns .btn {
-      padding: 10px 22px;
-      font-size: 14.5px;
-      border-radius: 8px;
+      padding: 8px 18px;
+      font-size: 13.5px;
+      border-radius: 6px;
       box-shadow: 0 4px 14px rgba(0, 0, 0, .25)
     }
 
@@ -938,26 +938,26 @@
 
     @media(max-width:600px) {
       .hero {
-        height: 340px;
-        min-height: 340px;
+        height: auto;
+        min-height: 220px;
       }
 
       .hin {
-        padding-block: 26px
+        padding-block: 16px
       }
 
       .hero h1 {
-        font-size: 24px
+        font-size: 20px
       }
 
       .hero p {
-        font-size: 13.5px;
-        margin-bottom: 14px
+        font-size: 12.5px;
+        margin-bottom: 10px
       }
 
       .hero-btns .btn {
-        padding: 8px 16px;
-        font-size: 13px
+        padding: 7px 14px;
+        font-size: 12.5px
       }
     }
 
