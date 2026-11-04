@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Admission Help Desk – KSU GECI</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg2: #f5f7fa;
+      --tx: #1b2433;
+      --mu: #5f6b7a;
+      --bd: #e3e8ef;
+      --ac: #134a9e;
+      --ac-dark: #0b2a55;
+      --ac-navy: #071a38;
+      --ok: #0a7a3d;
+      --wa: #25d366;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 72px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--tx);
+      font: 15px/1.55 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    svg {
+      flex: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #ffffff;
+      border-bottom: 1px solid var(--bd);
+      transition: box-shadow 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px clamp(18px, 3.2vw, 52px);
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ac-dark);
+      letter-spacing: .3px;
+    }
+
+    .logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+
+    .bar nav {
+      margin-left: auto;
+      display: flex;
+      gap: 4px;
+    }
+
+    .bar nav a {
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      color: var(--mu);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .bar nav a:hover,
+    .bar nav a.on {
+      background: var(--bg2);
+      color: var(--tx);
+    }
+
+    .wrap {
+      padding: 0 clamp(18px, 3.2vw, 52px);
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    /* Hero Banner matching main GECI style */
+    .hero {
+      position: relative;
+      padding: 0;
+      width: 100%;
+      height: clamp(340px, 38vw, 480px);
+      min-height: 340px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: #ffffff;
+      background: #0266b3;
+    }
+
+    .hb-pic {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hb {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(7, 26, 56, .90) 0%, rgba(7, 26, 56, .65) 52%, rgba(7, 26, 56, .25) 90%);
+      pointer-events: none;
+    }
+
+    .hin {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1180px;
+      margin: 0;
+      padding-inline: clamp(18px, 3.5vw, 52px);
+      padding-block: 36px;
+    }
+
+    .kick {
+      font-size: clamp(11.5px, 1.4vw, 13px);
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #bcd4f5;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4.3vw, 42px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -.8px;
+      color: #ffffff;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, .45);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #e5effa;
+      max-width: 560px;
+      font-size: clamp(14px, 1.6vw, 15.5px);
+      line-height: 1.5;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, .35);
+      margin-bottom: 18px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .chips a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 6px;
+      background: rgba(7, 26, 56, 0.65);
+      color: #ffffff;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .chips a:hover {
+      background: #ffffff;
+      color: var(--ac-dark);
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 0 14px;
+      max-width: 560px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      color: var(--mu);
+    }
+
+    .search input {
+      border: 0;
+      outline: 0;
+      flex: 1;
+      padding: 12px 0;
+      font: inherit;
+      color: var(--tx);
+      background: transparent;
+      margin-bottom: 0;
+    }
+
+    /* Ticker */
+    .tick {
+      background: var(--bg2);
+      border-block: 1px solid var(--bd);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding-inline: clamp(18px, 3.2vw, 52px);
+    }
+
+    .tick em {
+      flex: none;
+      background: var(--ac);
+      color: #fff;
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-right: 12px;
+    }
+
+    .tick .m {
+      flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .tick .m span {
+      display: inline-block;
+      padding: 10px 0 10px 100%;
+      animation: sc 100s linear infinite;
+      font-size: 14px;
+      color: var(--tx);
+    }
+
+    .tick:hover .m span {
+      animation-play-state: paused;
+    }
+
+    @keyframes sc {
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Sections and Content */
+    section {
+      padding: 32px 0;
+      scroll-margin-top: 80px;
+    }
+
+    h2 {
+      font-size: 21px;
+      letter-spacing: -.4px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--tx);
+    }
+
+    h2 svg {
+      color: var(--ac);
+    }
+
+    .sub {
+      color: var(--mu);
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--bd);
+      border-radius: 6px;
+      padding: 16px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #9db4d6;
+      box-shadow: 0 8px 24px rgba(11, 42, 85, .08);
+    }
+
+    .dl small {
+      color: var(--ac);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .9px;
+      text-transform: uppercase;
+    }
+
+    .dl b {
+      display: block;
+      font-size: 20px;
+      margin: 4px 0 12px;
+      color: var(--tx);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 0;
+      border-radius: 6px;
+      padding: 9px 16px;
+      font: 500 14px inherit;
+      font-family: inherit;
+      cursor: pointer;
+      background: var(--ac);
+      color: #fff;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.92;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn.g {
+      background: var(--bg2);
+      color: var(--tx);
+      border: 1px solid var(--bd);
+    }
+
+    .btn.g:hover {
+      background: #e9eef5;
+    }
+
+    /* Accordions */
+    .acc {
+      border: 1px solid var(--bd);
+      border-radius: 6px;
+      margin-bottom: 12px;
+      background: #ffffff;
+      transition: border-color 0.2s ease;
+    }
+
+    .acc.open {
+      border-color: #9db4d6;
+    }
+
+    .acc>.h {
+      all: unset;
+      box-sizing: border-box;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15.5px;
+      color: var(--tx);
+    }
+
+    .acc>.h svg:first-child {
+      color: var(--ac);
+    }
+
+    .acc>.h .cv {
+      margin-left: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .acc.open .cv {
+      transform: rotate(180deg);
+    }
+
+    .acc>.p {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease;
+    }
+
+    .acc.open>.p {
+      grid-template-rows: 1fr;
+    }
+
+    .acc>.p>div {
+      overflow: hidden;
+    }
+
+    .acc .in {
+      padding: 4px 18px 18px;
+      border-top: 1px solid var(--bd);
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--bd);
+      flex-wrap: wrap;
+    }
+
+    .row:last-child {
+      border: 0;
+    }
+
+    .row small {
+      color: var(--mu);
+      display: block;
+      font-size: 12.5px;
+      margin-top: 2px;
+    }
+
+    .acts {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 12px 0 6px;
+    }
+
+    .tabs button {
+      font: 500 13px inherit;
+      font-family: inherit;
+      border: 1px solid var(--bd);
+      background: var(--bg2);
+      color: var(--tx);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tabs button.on {
+      background: var(--ac);
+      color: #fff;
+      border-color: var(--ac);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    td {
+      padding: 9px 8px;
+      border-top: 1px solid var(--bd);
+    }
+
+    td:last-child {
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--bg2);
+      color: var(--ac);
+      font-weight: 600;
+      border: 1px solid var(--bd);
+    }
+
+    details {
+      border-bottom: 1px solid var(--bd);
+      padding: 11px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--tx);
+    }
+
+    details p {
+      color: var(--mu);
+      margin-top: 6px;
+      font-size: 14.5px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--bd);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--tx);
+      font: inherit;
+      margin-bottom: 10px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid var(--ac);
+      border-color: transparent;
+    }
+
+    .st {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #fdf1c8;
+      color: #7a5b00;
+    }
+
+    /* Floating WhatsApp/Volunteer Call-to-Action */
+    .ask {
+      position: fixed;
+      right: max(16px, env(safe-area-inset-right));
+      bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      cursor: pointer;
+      color: #fff;
+      font: 600 14px inherit;
+      font-family: inherit;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: #25d366;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .2);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .ask:hover {
+      transform: scale(1.05);
+      background: #20bd5a;
+    }
+
+    dialog {
+      border: 0;
+      border-radius: 8px;
+      max-width: 480px;
+      width: calc(100% - 28px);
+      background: #ffffff;
+      color: var(--tx);
+      padding: 0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, .5);
+      backdrop-filter: blur(3px);
+    }
+
+    .dp {
+      padding: 20px;
+      display: grid;
+      gap: 12px;
+      max-height: 88vh;
+      overflow: auto;
+    }
+
+    .dh {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .x {
+      all: unset;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--bg2);
+      color: var(--tx);
+    }
+
+    .hide {
+      display: none !important;
+    }
+
+    .pg {
+      display: none;
+    }
+
+    .pg.on {
+      display: block;
+    }
+
+    .himg {
+      height: 110px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      color: var(--ac);
+      background: linear-gradient(135deg, var(--bg2), #dbe7f8);
+      margin-bottom: 12px;
+    }
+
+    .mu {
+      color: var(--mu);
+      font-size: 13.5px;
+    }
+
+    .meta {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      color: var(--mu);
+      font-size: 13.5px;
+      margin: 4px 0;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--mu);
+      font-size: 13px;
+      padding: 30px 18px 40px;
+      border-top: 1px solid var(--bd);
+      margin-top: 24px;
+    }
+
+    @media (max-width: 820px) {
+      .bar nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="bar">
+      <a class="logo" href="index.html#top" title="KSU GECI Help Desk - Back to Home">
+        <img id="lg" alt="" width="36" height="36">
+        <span>KSU GECI HELP DESK</span>
+      </a>
+      <a href="index.html" class="home-btn" style="margin-left:auto;font-size:13px;font-weight:600;padding:6px 12px;border-radius:6px;background:var(--bg2);color:var(--ac);border:1px solid var(--bd);display:inline-flex;align-items:center;gap:4px">← Home</a>
+      <nav>
+        <a href="#top" id="n1" class="on">Admission</a>
+        <a href="#docs">Documents</a>
+        <a href="#fees">Fees</a>
+        <a href="#hostel" id="n2">Hostel Desk</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="top" class="hero">
+    <picture class="hb-pic">
+      <source media="(max-width: 768px)" id="hbm-src" srcset="assets/hero-mobile.jpg">
+      <img class="hb" id="hb-img" src="assets/hero.jpg" alt="Government Engineering College Idukki">
+    </picture>
+    <div class="hin">
+      <div class="kick" id="kk">Government Engineering College, Idukki</div>
+      <h1 id="ttl">Admission Help Desk</h1>
+      <p id="sub">Documents, fees, dates and support for new students, all in one place.</p>
+      <div class="chips" id="chips"></div>
+      <label class="search"><span id="ico-s"></span><input id="q" placeholder="Search documents, fees, dates, FAQs…" aria-label="Search"></label>
+    </div>
+  </div>
+
+  <div class="tick">
+    <em>Updates</em>
+    <div class="m"><span id="tk"></span></div>
+  </div>
+
+  <main class="wrap">
+    <div class="pg on" id="p-adm">
+      <section id="dates">
+        <h2 id="h-d"></h2>
+        <p class="sub">Key dates for your admission. Tap “I missed this date” if you are late.</p>
+        <div class="grid" id="dg"></div>
+      </section>
+
+      <section>
+        <div class="acc" id="docs"><button class="h" id="b-docs"></button>
+          <div class="p">
+            <div>
+              <div class="in" id="doclist"></div>
+            </div>
+          </div>
+        </div>
+        <div class="acc" id="fees"><button class="h" id="b-fees"></button>
+          <div class="p">
+            <div>
+              <div class="in">
+                <div class="tabs" id="ft"></div>
+                <table id="fb"></table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="acc" id="cal"><button class="h" id="b-cal"></button>
+          <div class="p">
+            <div>
+              <div class="in" id="cl"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ann">
+        <h2 id="h-a"></h2>
+        <div class="tabs" id="at"></div>
+        <div id="al"></div>
+      </section>
+
+      <section id="dc">
+        <h2 id="h-dc"></h2>
+        <p class="sub">Official PDFs in one place.</p>
+        <div class="grid" id="dcg"></div>
+      </section>
+
+      <section id="missed">
+        <h2 id="h-m"></h2>
+        <p class="sub">Missing a date is not the end. Here is what to do.</p>
+        <div class="grid" id="mg"></div>
+      </section>
+
+      <section id="faq">
+        <h2 id="h-f"></h2>
+        <div id="fl"></div>
+      </section>
+
+      <section id="vol">
+        <h2 id="h-v"></h2>
+        <p class="sub">Ask here instead of messaging volunteers one by one. Pick a category, submit, and track the status.</p>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+          <div class="card">
+            <select id="vc">
+              <option>Documents</option>
+              <option>Fees</option>
+              <option>Allotment</option>
+              <option>Scholarship</option>
+              <option>Hostel</option>
+              <option>Other</option>
+            </select>
+            <textarea id="vt" rows="3" placeholder="Type your question"></textarea>
+            <button class="btn" id="vs">Submit question</button>
+          </div>
+          <div class="card"><b>Your questions</b>
+            <div id="vl" style="margin-top:6px"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="hist">
+        <h2 id="h-h"></h2>
+        <div class="card" id="hl"></div>
+      </section>
+    </div>
+
+    <div class="pg" id="p-host">
+      <section>
+        <h2 id="h-ho"></h2>
+        <p class="sub">Government and private hostels near the college. Contact volunteers for assistance.</p>
+        <div class="tabs" id="ht"></div>
+        <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(270px,1fr))" id="hg"></div>
+      </section>
+    </div>
+  </main>
+
+  <button class="ask" id="ab"></button>
+  <dialog id="dg1">
+    <div class="dp" id="dgc"></div>
+  </dialog>
+
+  <footer>© KSU GECI · Built for students · Admission Help Desk · <a href="index.html" style="color:var(--ac);font-weight:600;text-decoration:underline">Back to Main Home Portal</a></footer>
+
+  <script>
+    const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+    const LOGO = 'data:image/jpeg;base64,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';
+    const HERO = 'assets/hero.jpg';
+
+    const P = {
+      fi: "<path d='M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z'/><path d='M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8'/>",
+      ru: "<path d='M6 3h12M6 8h12M6 13l8.5 8M6 13h3c6.7 0 6.7-10 0-10'/>",
+      ca: "<path d='M8 2v4M16 2v4'/><rect width='18' height='18' x='3' y='4' rx='2'/><path d='M3 10h18'/>",
+      mg: "<path d='m3 11 18-5v12L3 14v-3z'/><path d='M11.6 16.8a3 3 0 1 1-5.8-1.6'/>",
+      dl: "<path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='m7 10 5 5 5-5M12 15V3'/>",
+      al: "<path d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3'/><path d='M12 9v4M12 17h.01'/>",
+      hp: "<circle cx='12' cy='12' r='10'/><path d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01'/>",
+      ms: "<path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/>",
+      hi: "<path d='M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8'/><path d='M3 3v5h5M12 7v5l4 2'/>",
+      bd: "<rect width='16' height='20' x='4' y='2' rx='2'/><path d='M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01'/>",
+      ey: "<path d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/><circle cx='12' cy='12' r='3'/>",
+      x: "<path d='M18 6 6 18M6 6l12 12'/>",
+      se: "<circle cx='11' cy='11' r='8'/><path d='m21 21-4.3-4.3'/>",
+      bed: "<path d='M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9'/>",
+      mp: "<path d='M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z'/><circle cx='12' cy='10' r='3'/>",
+      cv: "<path d='m6 9 6 6 6-6'/>",
+      cl: "<circle cx='12' cy='12' r='10'/><path d='M12 6v6l4 2'/>"
+    };
+    const ic = (n, s = 18) => `<svg width='${s}' height='${s}' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>${P[n]}</svg>`;
+
+    const DL = [["Application closing", "15 Nov 2026"], ["Allotment list", "22 Nov 2026"], ["Fee payment deadline", "29 Nov 2026"], ["Reporting date", "05 Dec 2026"], ["Certificate submission", "10 Dec 2026"]];
+    const DOCS = [["SSLC / 10th certificate", "Proof of date of birth"], ["Plus Two mark list", "Qualifying marks"], ["Transfer Certificate (TC)", "From the last institution"], ["Conduct certificate", "Issued by last school or college"], ["Community certificate", "For reservation and fee concession"], ["Income certificate", "For scholarships"], ["Aadhaar card", "Identity proof"], ["Passport-size photographs", "Six recent copies"]];
+    const NODOC = { "Transfer Certificate (TC)": "You can usually join provisionally with an undertaking. Submit the original TC within the time the college gives.", "default": "Apply for a duplicate at the issuing office or the e-District portal. Carry the application receipt, as many colleges accept it provisionally, and submit before 10 Dec 2026." };
+    const FEES = { General: [["Tuition (per year)", "₹35,000"], ["Admission fee", "₹1,500"], ["University fee", "₹4,000"], ["Caution deposit (refundable)", "₹3,000"]], "OBC / EWS": [["Tuition (per year)", "₹17,500"], ["Admission fee", "₹1,500"], ["University fee", "₹4,000"], ["Caution deposit (refundable)", "₹3,000"]], "SC / ST": [["Tuition (per year)", "₹0 (reimbursed)"], ["Admission fee", "₹0"], ["University fee", "₹2,000"], ["Caution deposit (refundable)", "₹3,000"]], Management: [["Tuition (per year)", "₹90,000"], ["Admission fee", "₹5,000"], ["University fee", "₹4,000"], ["Caution deposit (refundable)", "₹5,000"]] };
+    const CAL = [["Application opens", "01 Oct 2026"], ["Application closes", "15 Nov 2026"], ["First allotment", "22 Nov 2026"], ["Fee payment last date", "29 Nov 2026"], ["Reporting to college", "05 Dec 2026"], ["Certificate submission", "10 Dec 2026"], ["Classes begin", "15 Dec 2026"]];
+    const ANN = [["Allotment", "First allotment list published", "03 Nov"], ["Fees", "Fee payment portal is now open", "02 Nov"], ["Documents", "Community certificate format updated", "30 Oct"], ["Scholarship", "Scholarship applications open until 30 Nov", "28 Oct"], ["Hostel", "Hostel applications start with allotment", "25 Oct"]];
+    const DCS = ["Admission prospectus", "Fee structure 2026", "Document checklist", "Scholarship guide", "Hostel rules", "Cancellation form"];
+    const MISS = [["Missed allotment?", "Check the next allotment round or spot admission. Keep your application number ready and raise a request below."], ["Missed fee payment?", "Contact the admission office within the grace period. A late fee may apply and the seat can be cancelled if unpaid."], ["Missed certificate submission?", "Submit the certificate with a written request as soon as possible. Seats can be held provisionally for a few days."], ["Missed reporting date?", "Inform the college office before the date passes and ask a volunteer about the extension process."]];
+    const FAQ = [["What if I missed an allotment?", "Check for later rounds and spot admission. Your registration usually stays valid. See Missed a Deadline above."], ["What if I don’t have my TC?", "You can usually join provisionally with an undertaking, then submit the original TC within the time the college gives."], ["How can I cancel admission?", "Submit the cancellation form from the Download Centre to the college office. Refund depends on the date of cancellation."], ["What happens if I don’t pay the fee?", "The allotted seat can be cancelled and offered to the next candidate on the list."], ["How do I apply for scholarships?", "Keep income and community certificates ready, then apply on the scholarship portal before the deadline. A volunteer can help."]];
+    const HIST = [["03 Nov 2026", "First allotment list added"], ["30 Oct 2026", "Community certificate format updated"], ["28 Oct 2026", "Scholarship deadline extended to 30 Nov"], ["20 Oct 2026", "Fee structure revised for Management quota"]];
+    const HOS = [["gov", "Government Boys’ Hostel", "Near main gate, Idukki", "₹600 / month", "Mess, Wi-Fi, study hall, laundry"], ["gov", "Government Girls’ Hostel", "Campus road, Idukki", "₹600 / month", "Mess, 24h security, library access"], ["pvt", "Green Valley Hostel", "Town road, 1.2 km from college", "₹4,500 / month", "AC rooms, Wi-Fi, gym, laundry"], ["pvt", "Scholars’ Inn (Girls)", "Medical College road, 0.8 km", "₹5,200 / month", "Meals, CCTV, warden, study room"], ["pvt", "Campus Nest", "Near bus stand, 2 km", "₹3,800 / month", "Shared rooms, mess, parking"]];
+
+    const CH = [["Deadlines", "#dates", "cl"], ["Documents", "#docs", "fi", "docs"], ["Fees", "#fees", "ru", "fees"], ["Calendar", "#cal", "ca", "cal"], ["Announcements", "#ann", "mg"], ["Downloads", "#dc", "dl"], ["Missed deadline", "#missed", "al"], ["FAQ", "#faq", "hp"], ["Ask a volunteer", "#vol", "ms"], ["Updates", "#hist", "hi"], ["Hostel Desk", "#hostel", "bd"]];
+
+    $('#lg').src = 'assets/logo.jpg';
+    $('#lg').onerror = () => { $('#lg').src = LOGO; };
+    if ($('#hb-img')) $('#hb-img').src = HERO;
+    if ($('#hbm-src')) $('#hbm-src').srcset = 'assets/hero-mobile.jpg';
+
+    $("#chips").innerHTML = CH.map(c => `<a href="${c[1]}" ${c[3] ? `data-o="${c[3]}"` : ""}>${ic(c[2], 15)}${c[0]}</a>`).join("");
+    $("#ico-s").innerHTML = ic("se");
+    $("#ab").innerHTML = ic("ms", 18) + "Ask a Volunteer";
+
+    [["h-d", "Deadlines", "cl"], ["h-a", "Announcements", "mg"], ["h-dc", "Download Centre", "dl"], ["h-m", "Missed a Deadline?", "al"], ["h-f", "Admission FAQ", "hp"], ["h-v", "Ask a Volunteer", "ms"], ["h-h", "Update History", "hi"], ["h-ho", "Hostel Desk", "bd"]].forEach(a => $("#" + a[0]).innerHTML = ic(a[2], 20) + a[1]);
+    [["docs", "Required documents", "fi"], ["fees", "Fee structure", "ru"], ["cal", "Admission calendar", "ca"]].forEach(a => $("#b-" + a[0]).innerHTML = ic(a[2], 20) + a[1] + `<span class="cv">${ic("cv")}</span>`);
+
+    $("#tk").textContent = DL.map(d => d[0] + ": " + d[1]).concat(ANN.map(a => a[1])).join("     •     ");
+    $("#dg").innerHTML = DL.map(d => `<div class="card dl s"><small>${d[0]}</small><b>${d[1]}</b><button class="btn g" data-m="${d[0]}">I missed this date</button></div>`).join("");
+    $("#doclist").innerHTML = DOCS.map((d, i) => `<div class="row s"><div>${d[0]}<small>${d[1]}</small></div><div class="acts"><button class="btn g" data-p="${i}">${ic("ey", 15)}Preview</button><button class="btn g" data-n="${i}">I don’t have this document</button></div></div>`).join("");
+
+    function fee(k) {
+      $("#fb").innerHTML = FEES[k].map(r => `<tr class="s"><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("");
+      $$("#ft button").forEach(b => b.classList.toggle("on", b.textContent === k));
+    }
+    $("#ft").innerHTML = Object.keys(FEES).map(k => `<button data-f="${k}">${k}</button>`).join("");
+    fee("General");
+
+    $("#cl").innerHTML = CAL.map(c => `<div class="row s"><span>${c[0]}</span><b>${c[1]}</b></div>`).join("");
+
+    let cat = "All";
+    function ann() {
+      $("#al").innerHTML = ANN.filter(a => cat === "All" || a[0] === cat).map(a => `<div class="card s" style="margin-bottom:8px"><span class="tag">${a[0]}</span> <b>${a[1]}</b> <span class="mu">· ${a[2]}</span></div>`).join("");
+      $$("#at button").forEach(b => b.classList.toggle("on", b.textContent === cat));
+    }
+    $("#at").innerHTML = ["All", ...new Set(ANN.map(a => a[0]))].map(c => `<button data-c="${c}">${c}</button>`).join("");
+    ann();
+
+    $("#dcg").innerHTML = DCS.map(f => `<div class="card s" style="display:flex;align-items:center;gap:10px;justify-content:space-between"><span style="display:flex;gap:8px;align-items:center">${ic("fi")}${f}</span><button class="btn g" data-dl>${ic("dl", 15)}PDF</button></div>`).join("");
+    $("#mg").innerHTML = MISS.map(m => `<div class="card s"><b>${m[0]}</b><p class="mu" style="margin:6px 0 12px">${m[1]}</p><button class="btn g" data-ask>Get help</button></div>`).join("");
+    $("#fl").innerHTML = FAQ.map(f => `<details class="s"><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("");
+    $("#hl").innerHTML = HIST.map(h => `<div class="row s"><span>${h[1]}</span><span class="mu">${h[0]}</span></div>`).join("");
+
+    let hf = "all";
+    function hos() {
+      $("#hg").innerHTML = HOS.filter(h => hf === "all" || h[0] === hf).map(h => `<div class="card"><div class="himg">${ic("bd", 40)}</div><b>${h[1]}</b> <span class="tag">${h[0] === "gov" ? "Government" : "Private"}</span><div class="meta">${ic("mp", 15)}${h[2]}</div><div class="meta">${ic("ru", 15)}<b style="color:var(--tx)">${h[3]}</b></div><p class="mu" style="margin:4px 0 12px">${h[4]}</p><button class="btn g" data-ask>Enquire</button></div>`).join("");
+      $$("#ht button").forEach(b => b.classList.toggle("on", b.dataset.h === hf));
+    }
+    $("#ht").innerHTML = [["all", "All"], ["gov", "Government"], ["pvt", "Private"]].map(a => `<button data-h="${a[0]}">${a[1]}</button>`).join("");
+    hos();
+
+    function show(h) {
+      $("#dgc").innerHTML = `<div class="dh"><b style="font-size:17px">${h[0]}</b><button class="x" data-x aria-label="Close">${ic("x", 16)}</button></div>${h[1]}`;
+      $("#dg1").showModal();
+    }
+
+    function sample(t) {
+      return `<svg viewBox="0 0 300 380" style="width:100%;border:1px solid var(--bd);border-radius:6px;background:#fff"><rect x="12" y="12" width="276" height="356" fill="#fffef8" stroke="#bbb"/><text x="150" y="46" text-anchor="middle" font-size="14" font-weight="700" fill="#222">${t.toUpperCase()}</text><circle cx="150" cy="96" r="24" fill="none" stroke="#134a9e"/><rect x="36" y="140" width="190" height="8" fill="#d5d9e0"/><rect x="36" y="170" width="228" height="8" fill="#d5d9e0"/><rect x="36" y="200" width="190" height="8" fill="#d5d9e0"/><rect x="36" y="230" width="228" height="8" fill="#d5d9e0"/><text x="150" y="215" text-anchor="middle" font-size="44" font-weight="700" fill="#c0392b33" transform="rotate(-25 150 215)">SAMPLE</text><text x="236" y="350" font-size="11" fill="#555">Signature</text></svg>`;
+    }
+
+    let Q = [];
+    try {
+      Q = JSON.parse(localStorage.getItem("ksuq") || "[]");
+    } catch (e) { }
+
+    function rq() {
+      $("#vl").innerHTML = Q.length ? Q.map(q => `<div class="row"><span><span class="tag">${q.c}</span> ${q.t}</span><span class="st">Pending</span></div>`).join("") : '<p class="mu">No questions yet.</p>';
+    }
+    rq();
+
+    const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    function askForm() {
+      show(["Ask a volunteer", `<select id="vc2"><option>Documents</option><option>Fees</option><option>Allotment</option><option>Scholarship</option><option>Hostel</option><option>Other</option></select><textarea id="vt2" rows="3" placeholder="Type your question"></textarea><button class="btn" data-s2>Submit</button>`]);
+    }
+
+    function addQ(c, t) {
+      t = t.trim();
+      if (!t) return;
+      Q.unshift({ c, t: esc(t) });
+      try {
+        localStorage.setItem("ksuq", JSON.stringify(Q));
+      } catch (e) { }
+      rq();
+    }
+
+    document.addEventListener("click", e => {
+      const t = e.target.closest("[data-m],[data-p],[data-n],[data-f],[data-c],[data-h],[data-dl],[data-ask],[data-x],[data-s2],[data-o],#ab,#vs,.acc>.h");
+      if (!t) return;
+      if (t.dataset.m) show(["Missed: " + t.dataset.m, `<p class="mu">Most missed dates have a way out. Contact the admission office quickly and ask a volunteer to guide you.</p><button class="btn" data-ask>Ask a volunteer</button>`]);
+      else if (t.dataset.p !== undefined) show([DOCS[t.dataset.p][0] + " · sample", sample(DOCS[t.dataset.p][0])]);
+      else if (t.dataset.n !== undefined) {
+        const d = DOCS[t.dataset.n][0];
+        show(["Don’t have: " + d, `<p class="mu">${NODOC[d] || NODOC.default}</p><button class="btn" data-ask>Ask a volunteer</button>`]);
+      }
+      else if (t.dataset.f) fee(t.dataset.f);
+      else if (t.dataset.c) { cat = t.dataset.c; ann(); }
+      else if (t.dataset.h) { hf = t.dataset.h; hos(); }
+      else if (t.dataset.dl !== undefined) show(["Download", "<p class='mu'>This is a sample. Link your official PDF here.</p>"]);
+      else if (t.dataset.ask !== undefined || t.id === "ab") askForm();
+      else if (t.dataset.x !== undefined) $("#dg1").close();
+      else if (t.dataset.s2 !== undefined) {
+        addQ($("#vc2").value, $("#vt2").value);
+        $("#dg1").close();
+        location.hash = "vol";
+      }
+      else if (t.id === "vs") {
+        addQ($("#vc").value, $("#vt").value);
+        $("#vt").value = "";
+      }
+      else if (t.dataset.o) $("#" + t.dataset.o).classList.add("open");
+      else t.parentElement.classList.toggle("open");
+    });
+
+    $("#dg1").addEventListener("click", e => {
+      if (e.target === $("#dg1")) $("#dg1").close();
+    });
+
+    const updateHeaderScroll = () => {
+      const hdr = $('header');
+      if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 50);
+    };
+    window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+
+    function route() {
+      const h = location.hash === "#hostel";
+      $("#p-adm").classList.toggle("on", !h);
+      $("#p-host").classList.toggle("on", h);
+      $("#ttl").textContent = h ? "Hostel Desk" : "Admission Help Desk";
+      $("#sub").textContent = h ? "Find government and private hostels, fees, services and location." : "Documents, fees, dates and support for new students, all in one place.";
+      $("#n1").classList.toggle("on", !h);
+      $("#n2").classList.toggle("on", h);
+      if (h) scrollTo(0, 0);
+    }
+    addEventListener("hashchange", route);
+    route();
+
+    $("#q").addEventListener("input", e => {
+      const v = e.target.value.toLowerCase().trim();
+      if (location.hash === "#hostel" && v) location.hash = "top";
+      $$(".s").forEach(i => i.classList.toggle("hide", !!v && !i.textContent.toLowerCase().includes(v)));
+      if (v) $$(".acc").forEach(a => a.classList.add("open"));
+    });
+  </script>
+</body>
+
+</html>
